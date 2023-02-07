@@ -1,4 +1,4 @@
-package io.aptech.project;
+package io.aptech.Controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
