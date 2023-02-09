@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="461.0" prefWidth="568.0" style="-fx-cursor: pointer; -fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aptech.Controller.LoginController">
+   <children>
+      <Label alignment="CENTER" layoutY="-2.0" prefHeight="78.0" prefWidth="568.0" style="-fx-background-color: #d485d1;" text="Login" textAlignment="CENTER" textFill="#ffffffe7">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <TextField fx:id="lg_userName" layoutX="111.0" layoutY="151.0" prefHeight="34.0" prefWidth="364.0" promptText="Enter your username" />
+      <Button fx:id="lg_submit" layoutX="232.0" layoutY="346.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="104.0" style="-fx-background-color: #4b9ffa;" text="Submit" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Label fx:id="err_userName" layoutX="96.0" layoutY="209.0" textFill="#f44f4f">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="err_password" layoutX="96.0" layoutY="284.0" textFill="#fa5151">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="err_login" alignment="CENTER" layoutX="160.0" layoutY="290.0" prefHeight="18.0" prefWidth="246.0" />
+      <Button fx:id="change_passowrd" layoutX="361.0" layoutY="346.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="115.0" text="Forgot password">
+         <font>
+            <Font size="13.0" />
+         </font></Button>
+      <Button fx:id="lg_register" layoutX="111.0" layoutY="347.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="79.0" text="Register">
+         <font>
+            <Font size="13.0" />
+         </font></Button>
+      <PasswordField fx:id="lg_password" layoutX="111.0" layoutY="234.0" prefHeight="34.0" prefWidth="364.0" promptText="Enter your password" />
+      <ImageView fitHeight="34.0" fitWidth="37.0" layoutX="67.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/user2.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="34.0" fitWidth="47.0" layoutX="67.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/password.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
