@@ -20,20 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class RegisterController implements Initializable {
-    @FXML private TextField res_fullname;
-    @FXML private TextField res_username;
-    @FXML private PasswordField res_password;
-    @FXML private TextField res_email;
-    @FXML private TextField res_phone;
-    @FXML private Button btn_register;
-    @FXML private Label err_fullname;
-    @FXML private Label err_username;
-    @FXML private Label err_password;
-    @FXML private Label err_email;
-    @FXML private Label err_phone;
-
-    @Override
+  @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btn_register.setOnAction(e->{
             String checkFullName = "YES";
