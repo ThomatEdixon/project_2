@@ -20,7 +20,20 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-  @Override
+public class RegisterController implements Initializable {
+    @FXML private TextField res_fullname;
+    @FXML private TextField res_username;
+    @FXML private PasswordField res_password;
+    @FXML private TextField res_email;
+    @FXML private TextField res_phone;
+    @FXML private Button btn_register;
+    @FXML private Label err_fullname;
+    @FXML private Label err_username;
+    @FXML private Label err_password;
+    @FXML private Label err_email;
+    @FXML private Label err_phone;
+
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btn_register.setOnAction(e->{
             String checkFullName = "YES";
@@ -33,6 +46,7 @@ import java.util.ResourceBundle;
             String resPassword = res_password.getText();
             String resEmail = res_email.getText();
             String resPhone = res_phone.getText();
+
             String passwordEncoder = BCrypt.hashpw(resPassword,BCrypt.gensalt(12));
             // check full name
             if(resFullName.length() == 0 ){
@@ -43,10 +57,9 @@ import java.util.ResourceBundle;
                 err_fullname.setText("Full name required 6-50 characters");
                 err_fullname.setStyle("-fx-text-fill: #ff1744");
                 checkFullName = "NO";
-            }else{
+            }else {
                 checkFullName = "YES";
                 err_fullname.setText("");
-
             }
             //check username
             if(resUsername.length() == 0 ){
@@ -83,11 +96,9 @@ import java.util.ResourceBundle;
                 err_email.setText("Email is invalid");
                 err_email.setStyle("-fx-text-fill: #ff1744");
                 checkEmail = "NO";
-
             }else{
                 checkEmail = "YES";
                 err_email.setText("");
-
             }
             //check phone
             if (resPhone.length()==0){
@@ -95,16 +106,15 @@ import java.util.ResourceBundle;
                 err_phone.setStyle("-fx-text-fill: #ff1744");
                 checkPhone= "NO";
             } else if (RegisterValidation.checkPhone(resPhone)=="NO") {
+
                 err_phone.setText("Phone is invalid");
                 err_phone.setStyle("-fx-text-fill: #ff1744");
                 checkPhone= "NO";
-
             }else{
                 checkPhone= "YES";
                 err_phone.setText("");
             }
             //check error before register and insert
-
             if(checkFullName.equals("YES") && checkUserName.equals("YES") && checkPassword.equals("YES") && checkEmail.equals("YES")&& checkPhone.equals("YES")){
                 User n_user = new User();
                 n_user.setFullName(resFullName);
@@ -115,9 +125,9 @@ import java.util.ResourceBundle;
                 UserStatement ust = new UserStatement();
                 ust.insert(n_user);
                 //close window
-                    Node node = (Node) e.getSource();
-                    Stage thisStage = (Stage) node.getScene().getWindow();
-                    thisStage.close();
+                Node node = (Node) e.getSource();
+                Stage thisStage = (Stage) node.getScene().getWindow();
+                thisStage.close();
                 //load login window
                 loadLoginWindow();
             }
