@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserStatement implements DAORepository<User> {
@@ -35,7 +36,23 @@ public class UserStatement implements DAORepository<User> {
 
     @Override
     public User getById(int id) {
+
+
         return null;
+    }
+    public ResultSet getBYUserName(String userName){
+        ResultSet user = null;
+        try {
+            String sql = "select * from tbl_user where email = ?";
+
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1,userName);
+            user = stm.executeQuery();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return user;
     }
 
     @Override

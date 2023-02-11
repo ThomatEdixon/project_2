@@ -2,9 +2,11 @@ package io.aptech.Validation;
 
 public class RegisterValidation {
     public static String checkFullName(String fullName){
+
         String flag = "YES";
         String regex = "^([a-zA-Z ]+){6,50}$";
         if(!fullName.matches(regex)){
+
             flag="NO";
         }
         return flag;
@@ -12,7 +14,9 @@ public class RegisterValidation {
     public static String checkUsername(String username){
         String flag = "YES";
         String regex = "^([a-zA-Z ]+){6,50}$";
+
         if(!username.matches(regex)){
+
             flag="NO";
         }
         return flag;
