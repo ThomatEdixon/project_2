@@ -12,7 +12,7 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/User/register.fxml"));
+        loader.setLocation(getClass().getResource("/User/forgotPassword.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root, 600, 505);
         stage.setTitle("Register");
