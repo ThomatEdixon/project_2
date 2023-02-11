@@ -45,4 +45,13 @@ public class RegisterValidation {
         }
         return flag;
     }
+
+    public static String checkCode(String code) {
+        String flag = "YES";
+        String regex = "^[0-9]{6}$";
+        if(!code.matches(regex)){
+            flag="NO";
+        }
+        return flag;
+    }
 }

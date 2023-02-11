@@ -12,6 +12,10 @@ module io.aptech.project {
     requires mysql.connector.java;
     //Bcrypt
     requires jbcrypt;
+
+    // Send Email
+    requires javax.mail;
+
     opens io.aptech.project to javafx.fxml;
     exports io.aptech.project;
     exports io.aptech.Controller;
