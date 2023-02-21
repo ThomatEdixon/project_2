@@ -24,7 +24,22 @@ public class MoneyPlanStatement implements DAORepository {
         }
     }
 
-
+    public void create() {
+        try {
+            String sql = "CREATE TABLE IF NOT EXISTS tbl_moneyPlan (" +
+                    "id INT AUTO_INCREMENT PRIMARY KEY," +
+                    " user_id int not null," +
+                    "o_foodDrink int," +
+                    "o_clothes int ," +
+                    "o_petroleum int ," +
+                    "foreign key (user_id) references tbl_user(id)" +
+                    ");";
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.executeUpdate();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void insert(Object o) {
 
