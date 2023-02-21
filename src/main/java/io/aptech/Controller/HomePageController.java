@@ -31,13 +31,10 @@ public class HomePageController implements Initializable {
     @FXML private Label user_name;
     @FXML private Label user_id;
     private static int count = 0;
+
     public HomePageController() {
     }
 
-    public void getUser(User user) {
-        user_id.setText(String.valueOf(user.getId()));
-        user_name.setText("Hello " + user.getFullName());
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         user_id.setVisible(false);
