@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="640.0" prefWidth="730.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aptech.Controller.PlanningController">
+<AnchorPane prefHeight="640.0" prefWidth="730.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aptech.Controller.PlanningController">
    <children>
       <Label layoutY="-6.0" prefHeight="64.0" prefWidth="694.0" text="Planning" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <padding>
@@ -121,7 +120,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutY="443.0" prefHeight="114.0" prefWidth="700.0" style="-fx-background-color: #fff;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="443.0">
+      <AnchorPane fx:id="planning_bill" layoutY="443.0" prefHeight="114.0" prefWidth="700.0" style="-fx-background-color: #fff;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="443.0">
          <children>
             <ImageView fitHeight="58.0" fitWidth="62.0" layoutX="25.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>

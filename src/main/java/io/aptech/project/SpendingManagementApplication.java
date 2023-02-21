@@ -15,7 +15,7 @@ public class SpendingManagementApplication extends Application {
         loader.setLocation(getClass().getResource("/Planning/planning.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root, 730, 670);
-        stage.setTitle("Events");
+        stage.setTitle("Planning");
         stage.setScene(scene);
         stage.show();
     }

@@ -3,8 +3,6 @@ package io.aptech.Controller;
 import io.aptech.Entity.Events;
 import io.aptech.Model.EventsStatement;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,8 +15,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,7 +25,6 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 public class EventsController implements Initializable {
-    @FXML private AnchorPane main_view_event;
     @FXML private Button btn_add_event;
     @FXML private ImageView events_back_page;
     @FXML private Label event_all;
@@ -38,6 +35,7 @@ public class EventsController implements Initializable {
     @FXML private TableColumn<Events,Integer> c_spent;
     @FXML private TableColumn<Events,Date> c_start;
     @FXML private TableColumn<Events,Date> c_end;
+    @FXML private TableColumn<Events,Integer> c_id;
     private ObservableList<Events> events;
     private EventsStatement eventsStatement = new EventsStatement();
 
@@ -48,20 +46,24 @@ public class EventsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         eventsStatement.create();
         events = eventsStatement.getAll();
+        tbl_events.getColumns().get(4).setVisible(false);
         c_name.setCellValueFactory(new PropertyValueFactory<Events,String>("name"));
         c_spent.setCellValueFactory(new PropertyValueFactory<Events,Integer>("spent"));
         c_start.setCellValueFactory(new PropertyValueFactory<Events, Date>("startDate"));
         c_end.setCellValueFactory(new PropertyValueFactory<Events,Date>("endDate"));
+        c_id.setCellValueFactory(new PropertyValueFactory<Events,Integer>("id"));
         tbl_events.setItems(events);
         event_all.setOnMouseClicked(e->{
             events = eventsStatement.getAll();
             event_all.setStyle("-fx-text-fill: #000000");
             events_running.setStyle("-fx-text-fill: #f0f0f0");
             events_finished.setStyle("-fx-text-fill: #f0f0f0");
+            tbl_events.getColumns().get(4).setVisible(false);
             c_name.setCellValueFactory(new PropertyValueFactory<Events,String>("name"));
             c_spent.setCellValueFactory(new PropertyValueFactory<Events,Integer>("spent"));
             c_start.setCellValueFactory(new PropertyValueFactory<Events, Date>("startDate"));
             c_end.setCellValueFactory(new PropertyValueFactory<Events,Date>("endDate"));
+            c_id.setCellValueFactory(new PropertyValueFactory<Events,Integer>("id"));
             tbl_events.setItems(events);
         });
         events_running.setOnMouseClicked(e->{
@@ -69,10 +71,12 @@ public class EventsController implements Initializable {
             event_all.setStyle("-fx-text-fill: #f0f0f0");
             events_finished.setStyle("-fx-text-fill: #f0f0f0");
             events_running.setStyle("-fx-text-fill: #000000");
-            c_name.setCellValueFactory(new PropertyValueFactory<Events, String>("name"));
-            c_spent.setCellValueFactory(new PropertyValueFactory<Events, Integer>("spent"));
+            tbl_events.getColumns().get(4).setVisible(false);
+            c_name.setCellValueFactory(new PropertyValueFactory<Events,String>("name"));
+            c_spent.setCellValueFactory(new PropertyValueFactory<Events,Integer>("spent"));
             c_start.setCellValueFactory(new PropertyValueFactory<Events, Date>("startDate"));
-            c_end.setCellValueFactory(new PropertyValueFactory<Events, Date>("endDate"));
+            c_end.setCellValueFactory(new PropertyValueFactory<Events,Date>("endDate"));
+            c_id.setCellValueFactory(new PropertyValueFactory<Events,Integer>("id"));
             tbl_events.setItems(events);
         });
         events_finished.setOnMouseClicked(e->{
@@ -80,10 +84,12 @@ public class EventsController implements Initializable {
             events_running.setStyle("-fx-text-fill: #f0f0f0");
             event_all.setStyle("-fx-text-fill: #f0f0f0");
             events_finished.setStyle("-fx-text-fill: #000000");
+            tbl_events.getColumns().get(4).setVisible(false);
             c_name.setCellValueFactory(new PropertyValueFactory<Events,String>("name"));
             c_spent.setCellValueFactory(new PropertyValueFactory<Events,Integer>("spent"));
             c_start.setCellValueFactory(new PropertyValueFactory<Events, Date>("startDate"));
             c_end.setCellValueFactory(new PropertyValueFactory<Events,Date>("endDate"));
+            c_id.setCellValueFactory(new PropertyValueFactory<Events,Integer>("id"));
             tbl_events.setItems(events);
         });
 
@@ -101,6 +107,27 @@ public class EventsController implements Initializable {
             thisStage.close();
             //load login window
             loadAddEventWindow();
+        });
+        tbl_events.setOnMouseClicked(e ->{
+            try{
+                Events editEvent = tbl_events.getSelectionModel().getSelectedItem();
+                Stage stage = new Stage();
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/Events/editEvent.fxml"));
+                Pane viewEdit = loader.load();
+                Scene scene = new Scene(viewEdit);
+                EditEventController editEventController = loader.getController()    ;
+                editEventController.getEvents(editEvent);
+                stage.setTitle("Edit Event");
+                stage.setScene(scene);
+                stage.show();
+                // close window
+                Node node = (Node) e.getSource();
+                Stage thisStage = (Stage) node.getScene().getWindow();
+                thisStage.close();
+            }catch (IOException e1){
+                e1.printStackTrace();
+            }
         });
     }
     public void loadAddEventWindow(){
@@ -123,8 +150,8 @@ public class EventsController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/Planning/planning.fxml"));
             Parent root = loader.load();
-            Scene loginScene = new Scene(root,600, 400);
-            planningStage.setTitle("Add Event");
+            Scene loginScene = new Scene(root,730, 670);
+            planningStage.setTitle("Planning");
             planningStage.setScene(loginScene);
             planningStage.show();
         }catch (IOException e){

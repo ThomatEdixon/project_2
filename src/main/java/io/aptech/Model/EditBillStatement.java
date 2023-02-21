@@ -1,27 +1,31 @@
 package io.aptech.Model;
 
+import io.aptech.Entity.Bills;
 import io.aptech.Entity.Events;
 import io.aptech.Enum.StatusEvent;
 import io.aptech.Generic.DAORepository;
 import javafx.collections.ObservableList;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.time.LocalDateTime;
 import java.util.Calendar;
 
-public class AddEventStatement implements DAORepository<Events> {
-    private static final Connection connection = MySQLConnection.getConnection();
+public class EditBillStatement implements DAORepository<Bills> {
+    private static Connection connection = MySQLConnection.getConnection();
     @Override
-    public void insert(Events events) {
+    public void insert(Bills events) {
+
+    }
+
+    @Override
+    public void update(Bills events) {
         try{
-            String sql = "INSERT INTO tbl_events(e_name,e_status,e_start_date,e_end_date,e_spent)"+
-                    " VALUES (?,?,?,?,?)";
+            String sql = "Update tbl_bills set e_name = ? " +
+                    ",e_status = ? ,e_start_date = ? ,e_end_date = ? ,e_spent = ?" +
+                    " WHERE id = ?";
             PreparedStatement pst = connection.prepareStatement(sql);
-            pst.setString(1,events.getName());
+            pst.setString(1, events.getName());
             // Check status
             Calendar c = Calendar.getInstance();
             String[] info = String.valueOf(events.getEndDate()).split("-");
@@ -43,8 +47,9 @@ public class AddEventStatement implements DAORepository<Events> {
                 pst.setString(2,String.valueOf(StatusEvent.Running));
             }
             pst.setDate(3, events.getStartDate());
-            pst.setDate(4, (Date) events.getEndDate());
-            pst.setString(5, String.valueOf(events.getSpent()));
+            pst.setDate(4, events.getEndDate());
+            pst.setInt(5,events.getSpent());
+            pst.setInt(6,events.getId());
             pst.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();
@@ -52,22 +57,24 @@ public class AddEventStatement implements DAORepository<Events> {
     }
 
     @Override
-    public void update(Events events) {
-
-    }
-
-    @Override
-    public Events getById(int id) {
+    public Bills getById(int id) {
         return null;
     }
 
     @Override
-    public void delete(Events events) {
-
+    public void delete(Bills events) {
+        try{
+            String sql = "DELETE FROM tbl_bills WHERE id = ?";
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setInt(1, events.getId());
+            pst.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public ObservableList<Events> getAll() {
+    public ObservableList<Bills> getAll() {
         return null;
     }
 }

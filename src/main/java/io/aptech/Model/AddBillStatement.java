@@ -1,5 +1,6 @@
 package io.aptech.Model;
 
+import io.aptech.Entity.Bills;
 import io.aptech.Entity.Events;
 import io.aptech.Enum.StatusEvent;
 import io.aptech.Generic.DAORepository;
@@ -9,16 +10,14 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.time.LocalDateTime;
 import java.util.Calendar;
 
-public class AddEventStatement implements DAORepository<Events> {
+public class AddBillStatement implements DAORepository<Bills> {
     private static final Connection connection = MySQLConnection.getConnection();
     @Override
-    public void insert(Events events) {
+    public void insert(Bills events) {
         try{
-            String sql = "INSERT INTO tbl_events(e_name,e_status,e_start_date,e_end_date,e_spent)"+
+            String sql = "INSERT INTO tbl_bills(e_name,e_status,e_start_date,e_end_date,e_spent)"+
                     " VALUES (?,?,?,?,?)";
             PreparedStatement pst = connection.prepareStatement(sql);
             pst.setString(1,events.getName());
@@ -43,7 +42,7 @@ public class AddEventStatement implements DAORepository<Events> {
                 pst.setString(2,String.valueOf(StatusEvent.Running));
             }
             pst.setDate(3, events.getStartDate());
-            pst.setDate(4, (Date) events.getEndDate());
+            pst.setDate(4, events.getEndDate());
             pst.setString(5, String.valueOf(events.getSpent()));
             pst.executeUpdate();
         }catch (SQLException e){
@@ -52,22 +51,22 @@ public class AddEventStatement implements DAORepository<Events> {
     }
 
     @Override
-    public void update(Events events) {
+    public void update(Bills bills) {
 
     }
 
     @Override
-    public Events getById(int id) {
+    public Bills getById(int id) {
         return null;
     }
 
     @Override
-    public void delete(Events events) {
+    public void delete(Bills bills) {
 
     }
 
     @Override
-    public ObservableList<Events> getAll() {
+    public ObservableList<Bills> getAll() {
         return null;
     }
 }

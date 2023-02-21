@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aptech.Controller.EditEventController">
+   <children>
+      <AnchorPane prefHeight="62.0" prefWidth="600.0" style="-fx-background-color: #fff;">
+         <children>
+            <Label layoutX="75.0" layoutY="17.0" prefHeight="27.0" prefWidth="85.0" text="Edit Event">
+               <font>
+                  <Font name="Calibri Bold" size="18.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="exits_editevent" fitHeight="32.0" fitWidth="27.0" layoutX="32.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/x.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="edit_id" layoutX="153.0" layoutY="20.0" prefHeight="22.0" prefWidth="21.0">
+               <font>
+                  <Font name="Calibri Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <TextField fx:id="editEventName" layoutX="138.0" layoutY="92.0" prefHeight="27.0" prefWidth="403.0" promptText="Enter event" />
+      <TextField fx:id="editEventSpent" layoutX="138.0" layoutY="260.0" prefHeight="27.0" prefWidth="403.0" promptText="Enter spent" />
+      <Button fx:id="btn_editEvent" layoutX="175.0" layoutY="320.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #00e676;" text="Edit" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="15.0" />
+         </font>
+      </Button>
+      <DatePicker fx:id="editStartDateEvent" layoutX="138.0" layoutY="149.0" prefHeight="27.0" prefWidth="403.0" promptText="Enter start date" />
+      <DatePicker fx:id="editEndDateEvent" layoutX="138.0" layoutY="200.0" prefHeight="27.0" prefWidth="403.0" promptText="Enter end date" />
+      <ImageView fitHeight="27.0" fitWidth="43.0" layoutX="60.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/travel.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="27.0" fitWidth="52.0" layoutX="62.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/date.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="27.0" fitWidth="31.0" layoutX="62.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/date.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="39.0" fitWidth="31.0" layoutX="60.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/dolar.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="err_edit_startdate" layoutX="138.0" layoutY="176.0" prefHeight="18.0" prefWidth="403.0" />
+      <Label fx:id="err_edit_enddate" layoutX="138.0" layoutY="227.0" prefHeight="18.0" prefWidth="403.0" />
+      <Label fx:id="err_edit_spent" layoutX="138.0" layoutY="287.0" prefHeight="18.0" prefWidth="403.0" />
+      <Button fx:id="btn_deleteEvent" layoutX="404.0" layoutY="320.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #E81B1B;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="15.0" />
+         </font>
+      </Button>
+      <Label fx:id="err_edit_name" layoutX="138.0" layoutY="119.0" prefHeight="18.0" prefWidth="403.0" />
+   </children>
+</AnchorPane>

@@ -1,7 +1,7 @@
 package io.aptech.Controller;
 
-import io.aptech.Entity.Events;
-import io.aptech.Model.EventsStatement;
+import io.aptech.Entity.Bills;
+import io.aptech.Model.BillsStatement;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,42 +11,37 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
 import java.util.ResourceBundle;
 
-public class NullEventController implements Initializable {
-    @FXML private Button btn_add_event;
+public class NullBillController implements Initializable {
+    @FXML private Button btn_add_bill;
     @FXML private ImageView events_back_page;
-    @FXML private Label event_all;
-    @FXML private Label events_running;
-    @FXML private Label events_finished;
-    private ObservableList<Events> events;
-    private EventsStatement eventsStatement = new EventsStatement();
+    @FXML private Label bill_all;
+    @FXML private Label bills_running;
+    @FXML private Label bills_finished;
+    private ObservableList<Bills> bills;
+    private static BillsStatement billsStatement = new BillsStatement();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        event_all.setOnMouseClicked(e->{
-            event_all.setStyle("-fx-text-fill: #000000");
-            events_running.setStyle("-fx-text-fill: #f0f0f0");
-            events_finished.setStyle("-fx-text-fill: #f0f0f0");
+        bill_all.setOnMouseClicked(e->{
+            bill_all.setStyle("-fx-text-fill: #000000");
+            bills_running.setStyle("-fx-text-fill: #f0f0f0");
+            bills_finished.setStyle("-fx-text-fill: #f0f0f0");
         });
-        events_running.setOnMouseClicked(e->{
-            event_all.setStyle("-fx-text-fill: #f0f0f0");
-            events_finished.setStyle("-fx-text-fill: #f0f0f0");
-            events_running.setStyle("-fx-text-fill: #000000");
+        bills_running.setOnMouseClicked(e->{
+            bill_all.setStyle("-fx-text-fill: #f0f0f0");
+            bills_finished.setStyle("-fx-text-fill: #f0f0f0");
+            bills_running.setStyle("-fx-text-fill: #000000");
         });
-        events_finished.setOnMouseClicked(e->{
-            events_running.setStyle("-fx-text-fill: #f0f0f0");
-            event_all.setStyle("-fx-text-fill: #f0f0f0");
-            events_finished.setStyle("-fx-text-fill: #000000");
+        bills_finished.setOnMouseClicked(e->{
+            bills_running.setStyle("-fx-text-fill: #f0f0f0");
+            bill_all.setStyle("-fx-text-fill: #f0f0f0");
+            bills_finished.setStyle("-fx-text-fill: #000000");
         });
         events_back_page.setOnMouseClicked(e->{
             //close window
@@ -56,19 +51,19 @@ public class NullEventController implements Initializable {
             //load login window
             loadPlanningWindow();
         });
-        btn_add_event.setOnAction(e->{
+        btn_add_bill.setOnAction(e->{
             Node node = (Node) e.getSource();
             Stage thisStage = (Stage) node.getScene().getWindow();
             thisStage.close();
             //load login window
-            loadAddEventWindow();
+            loadAddBillWindow();
         });
     }
-    public void loadAddEventWindow(){
+    public void loadAddBillWindow(){
         try {
             Stage dddEventStage = new Stage();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/Events/addEvent.fxml"));
+            loader.setLocation(getClass().getResource("/Bill/addBill.fxml"));
             Parent root = loader.load();
             Scene loginScene = new Scene(root,600, 400);
             dddEventStage.setTitle("Add Event");
