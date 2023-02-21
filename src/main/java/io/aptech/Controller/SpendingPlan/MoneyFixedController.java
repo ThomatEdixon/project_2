@@ -2,6 +2,7 @@ package io.aptech.Controller.SpendingPlan;
 
 import io.aptech.Controller.LoadMainWindows;
 import io.aptech.Entity.MoneyFixed;
+import io.aptech.Model.BudgetStatement;
 import io.aptech.Model.MoneyPlanStatement;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -51,18 +52,29 @@ public class MoneyFixedController implements Initializable {
     private String check = "No";
     @FXML
     private MoneyPlanStatement moneyPlanStatement = new MoneyPlanStatement();
+    private BudgetStatement budgetStatement = new BudgetStatement();
     private static  String cerruntId;
     @FXML
     private Label m_total;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-//        Runnable task = () -> {
-//            m_total.setText("123456789");
-//        };
-//        executor.schedule(task, 1, TimeUnit.valueOf("MONTH"));
-//        executor.shutdown();
-//        moneyPlanStatement.create();
+        moneyPlanStatement.create();
+
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+        Runnable task = () -> {
+           try{
+              ResultSet rs = (ResultSet) budgetStatement.getById(1);
+              if(rs.next()){
+                  System.out.println("hello");
+                        System.out.println(rs.getString("balance") + "hello");
+              }
+           }catch (SQLException e){
+               throw new RuntimeException(e);
+           }
+        };
+
+        executor.schedule(task, 1, TimeUnit.SECONDS);
+        executor.shutdown();
         add_months.setOnAction(e ->{
             ItemController item = new ItemController("Option (Day)",this);
             window.open("/spendingPlan/items.fxml","Day",225,400);

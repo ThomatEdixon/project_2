@@ -20,7 +20,12 @@ module io.aptech.project {
     exports io.aptech.project;
     exports io.aptech.Controller;
     opens io.aptech.Controller to javafx.fxml;
+    opens io.aptech.Controller.SpendingPlan to javafx.fxml;
     opens User to javafx.fxml;
+    exports io.aptech.Entity;
+    opens io.aptech.Entity to javafx.fxml;
+
+    opens spendingPlan to javafx.fxml;
 
 
 }

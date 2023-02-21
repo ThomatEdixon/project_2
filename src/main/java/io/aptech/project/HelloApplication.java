@@ -13,7 +13,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader();
 
-        loader.setLocation(getClass().getResource("/User/login.fxml"));
+        loader.setLocation(getClass().getResource("/spendingPlan/plan.fxml"));
 
         Parent root = loader.load();
         Scene scene = new Scene(root, 568, 461);
