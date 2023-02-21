@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1793.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aptech.Controller.HomePageController">
+   <children>
+      <StackPane prefHeight="1793.0" prefWidth="730.0">
+         <children>
+            <ScrollPane prefHeight="200.0" prefWidth="200.0">
+               <content>
+                  <AnchorPane prefHeight="1793.0" prefWidth="730.0">
+                     <children>
+                        <Pane layoutX="-15.0" layoutY="-6.0" prefHeight="200.0" prefWidth="744.0" style="-fx-background-color: #33CCFF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <children>
+                              <Label layoutX="25.0" layoutY="21.0" prefHeight="27.0" prefWidth="332.0" style="-fx-font-weight: bold;" text="Hello VanTien2003!" textFill="WHITE">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Pane layoutX="43.0" layoutY="61.0" prefHeight="118.0" prefWidth="634.0" style="-fx-background-radius: 10; -fx-background-color: #fff;">
+                                 <children>
+                                    <Label layoutX="27.0" layoutY="21.0" prefHeight="21.0" prefWidth="96.0" text="Total balance">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="moneyBalance" layoutX="27.0" layoutY="46.0" prefHeight="55.0" prefWidth="188.0" style="-fx-font-weight: 700;" text="500.000 VND" textFill="#00b6ff">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                    </Label>
+                                    <FontIcon fx:id="btnEye" iconLiteral="fas-eye" iconSize="28" layoutX="565.0" layoutY="84.0" text="" />
+                                    <FontIcon iconLiteral="fas-angle-right" iconSize="20" layoutX="129.0" layoutY="39.0" text="" wrappingWidth="10.20001220703125" />
+                                 </children>
+                              </Pane>
+                              <FontIcon iconLiteral="fas-bell" iconSize="22" layoutX="657.0" layoutY="42.0" text="" />
+                           </children>
+                        </Pane>
+                        <SplitPane dividerPositions="0.4811643835616438" layoutX="71.0" layoutY="227.0" orientation="VERTICAL" prefHeight="118.0" prefWidth="586.0" style="-fx-background-color: #fff; -fx-background-radius: 10;">
+                           <items>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="498.0">
+                                 <children>
+                                    <Label layoutX="28.0" layoutY="15.0" style="-fx-font-weight: bold;" text="My wallet">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Hyperlink layoutX="480.0" layoutY="12.0" style="-fx-font-weight: bold;" text="See more..." textFill="#3ac70c">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Hyperlink>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="492.0">
+                                 <children>
+                                    <Label layoutX="53.0" layoutY="19.0" style="-fx-font-weight: bold;" text="Cash">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="514.0" layoutY="21.0" prefHeight="18.0" prefWidth="40.0" text="0 VND" />
+                                    <ImageView fitHeight="28.0" fitWidth="34.0" layoutX="15.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/wallet.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                           </items>
+                        </SplitPane>
+                        <Label layoutX="77.0" layoutY="368.0" style="-fx-font-weight: bold;" text="Expense report" textFill="#868282">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Hyperlink layoutX="556.0" layoutY="367.0" prefHeight="28.0" prefWidth="101.0" style="-fx-font-weight: bold;" text="View report" textFill="#3ac70c">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Hyperlink>
+                        <Pane layoutX="77.0" layoutY="405.0" prefHeight="785.0" prefWidth="574.0" style="-fx-background-radius: 15; -fx-background-color: #fff;">
+                           <children>
+                              <ToggleButton layoutX="29.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="255.0" text="Week">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </ToggleButton>
+                              <ToggleButton layoutX="284.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="255.0" style="-fx-background-color: #EEEEEE;" text="Month">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </ToggleButton>
+                              <Label layoutX="31.0" layoutY="92.0" style="-fx-font-weight: bold;" text="0 VND">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="29.0" layoutY="109.0" text="Total spending this week">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="188.0" layoutY="110.0" style="-fx-font-weight: bold;" text="0%" textFill="#ffbb00">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="11.0" fitWidth="10.0" layoutX="177.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/minus.png" />
+                                 </image>
+                              </ImageView>
+                              <AreaChart layoutX="12.0" layoutY="135.0" prefHeight="296.0" prefWidth="545.0">
+                                 <xAxis>
+                                    <CategoryAxis side="BOTTOM" />
+                                 </xAxis>
+                                 <yAxis>
+                                    <NumberAxis side="LEFT" />
+                                 </yAxis>
+                              </AreaChart>
+                              <Label layoutX="384.0" layoutY="434.0" style="-fx-font-weight: bold;" text="This week">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="141.0" layoutY="434.0" style="-fx-font-weight: bold;" text="Last week">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="54.0" layoutY="492.0" style="-fx-font-weight: bold;" text="Spend the most">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Pane layoutX="55.0" layoutY="531.0" prefHeight="60.0" prefWidth="490.0">
+                                 <children>
+                                    <Label layoutX="439.0" layoutY="18.0" prefHeight="26.0" prefWidth="37.0" style="-fx-font-weight: bold;" text="90%" textFill="RED">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="40.0" fitWidth="37.0" layoutX="7.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/food.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="61.0" layoutY="20.0" text="Food &amp; Beverage">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="55.0" layoutY="600.0" prefHeight="60.0" prefWidth="490.0">
+                                 <children>
+                                    <ImageView fitHeight="37.0" fitWidth="40.0" layoutX="6.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/shopping.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="60.0" layoutY="20.0" text="Shopping">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="439.0" layoutY="16.0" prefHeight="28.0" prefWidth="37.0" style="-fx-font-weight: bold;" text="50%" textFill="RED">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="77.0" layoutY="1291.0" prefHeight="200.0" prefWidth="574.0" style="-fx-background-color: #fff; -fx-background-radius: 15;">
+                           <children>
+                              <Label layoutY="92.0" prefHeight="28.0" prefWidth="574.0" style="-fx-alignment: center;" text="The added transaction will show up here =)">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Label layoutX="65.0" layoutY="1239.0" style="-fx-font-weight: bold;" text="Last transaction" textFill="#868282">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Hyperlink layoutX="561.0" layoutY="1238.0" prefHeight="28.0" prefWidth="92.0" style="-fx-font-weight: bold;" text="See more..." textFill="#3ac70c">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Hyperlink>
+                        <Label layoutX="38.0" layoutY="1552.0" prefHeight="28.0" prefWidth="652.0" style="-fx-alignment: center;" text="That's all for today">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <AnchorPane layoutY="1675.0" prefHeight="118.0" prefWidth="722.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="-0.40000000000009095" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1675.0">
+                           <children>
+                              <Label layoutX="61.0" layoutY="67.0" prefHeight="18.0" prefWidth="45.0" text="Home">
+                                 <font>
+                                    <Font name="Calibri" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="617.0" layoutY="67.0" prefHeight="18.0" prefWidth="57.0" text="Account">
+                                 <font>
+                                    <Font name="Calibri" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="466.0" layoutY="67.0" prefHeight="18.0" prefWidth="62.0" text="Planning">
+                                 <font>
+                                    <Font name="Calibri" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="190.0" layoutY="67.0" prefHeight="18.0" prefWidth="83.0" text="Transactions">
+                                 <font>
+                                    <Font name="Calibri" size="16.0" />
+                                 </font>
+                              </Label>
+                              <FontIcon iconLiteral="fas-home" iconSize="34" layoutX="61.0" layoutY="55.0" />
+                              <FontIcon fx:id="transaction" iconLiteral="fas-book" iconSize="34" layoutX="217.0" layoutY="55.0" />
+                              <FontIcon fx:id="planning" iconLiteral="fas-clipboard-list" iconSize="36" layoutX="484.0" layoutY="57.0" text="" />
+                              <FontIcon fx:id="accountUser" iconLiteral="fas-user-circle" iconSize="34" layoutX="630.0" layoutY="56.0" text="" />
+                              <FontIcon fx:id="addNew" fill="#28992a" iconLiteral="fas-plus-circle" iconSize="60" layoutX="335.0" layoutY="74.0" />
+                           </children>
+                        </AnchorPane>
+                        <FontIcon iconLiteral="far-laugh-squint" iconSize="18" layoutX="430.0" layoutY="1574.0" text="" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </StackPane>
+   </children>
+</VBox>
