@@ -12,9 +12,18 @@ module io.aptech.project {
     requires mysql.connector.java;
     //Bcrypt
     requires jbcrypt;
+
+    requires org.kordamp.ikonli.fontawesome5;
+    requires org.kordamp.ikonli.core;
+    requires org.kordamp.ikonli.javafx;
+
+//    Send Mail
+    requires javax.mail;
+
     opens io.aptech.project to javafx.fxml;
     exports io.aptech.project;
     exports io.aptech.Controller;
     opens io.aptech.Controller to javafx.fxml;
     opens User to javafx.fxml;
+    opens MainWindow to javafx.fxml;
 }
