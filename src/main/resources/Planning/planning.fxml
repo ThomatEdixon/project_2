@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="640.0" prefWidth="730.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aptech.Controller.PlanningController">
+   <children>
+      <Label layoutY="-6.0" prefHeight="64.0" prefWidth="694.0" text="Planning" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+         <font>
+            <Font name="Calibri Bold" size="19.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutY="64.0" prefHeight="99.0" prefWidth="694.0" style="-fx-background-color: #fff;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <ImageView fitHeight="58.0" fitWidth="62.0" layoutX="14.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/budgets.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="102.0" layoutY="11.0" prefHeight="25.0" prefWidth="90.0" text="Budgets" textFill="#2fd170">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="102.0" layoutY="34.0" prefHeight="26.0" prefWidth="332.0" text="A financial plan to balance your income and expences" textFill="#2a302d" />
+            <ImageView fitHeight="34.0" fitWidth="48.0" layoutX="646.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/chevron.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="planning_event" layoutY="177.0" prefHeight="114.0" prefWidth="700.0" style="-fx-background-color: #fff;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label layoutX="102.0" layoutY="11.0" prefHeight="25.0" prefWidth="90.0" text="Events" textFill="#2fd170">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="102.0" layoutY="34.0" prefHeight="26.0" prefWidth="352.0" text="Create an event to track on  your spending during an actual event" textFill="#262827" />
+            <ImageView fitHeight="49.0" fitWidth="70.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/event.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="34.0" fitWidth="48.0" layoutX="644.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/chevron.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="311.0" prefHeight="114.0" prefWidth="700.0" style="-fx-background-color: #fff;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <ImageView fitHeight="58.0" fitWidth="62.0" layoutX="20.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/recurring.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="102.0" layoutY="11.0" prefHeight="26.0" prefWidth="166.0" text="Recurring Transactions" textFill="#2fd170">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="102.0" layoutY="34.0" prefHeight="26.0" prefWidth="382.0" text="Create recurring transactions the will be automatically added the future" textFill="#242b27" />
+            <ImageView fitHeight="34.0" fitWidth="48.0" layoutX="644.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/chevron.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="3.0" layoutY="576.0" prefHeight="99.0" prefWidth="603.0" style="-fx-background-color: #fff;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label layoutX="61.0" layoutY="67.0" prefHeight="18.0" prefWidth="50.0" text="Home">
+               <font>
+                  <Font name="Calibri" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="631.0" layoutY="67.0" prefHeight="18.0" prefWidth="57.0" text="Account">
+               <font>
+                  <Font name="Calibri" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="480.0" layoutY="67.0" prefHeight="18.0" prefWidth="62.0" text="Planning">
+               <font>
+                  <Font name="Calibri" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="190.0" layoutY="67.0" prefHeight="18.0" prefWidth="83.0" text="Transactions">
+               <font>
+                  <Font name="Calibri" size="16.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="39.0" fitWidth="52.0" layoutX="61.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/home.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="39.0" fitWidth="56.0" layoutX="490.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/plan.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="39.0" fitWidth="56.0" layoutX="641.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/account.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="39.0" fitWidth="49.0" layoutX="212.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/book.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="planning_bill" layoutY="443.0" prefHeight="114.0" prefWidth="700.0" style="-fx-background-color: #fff;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="443.0">
+         <children>
+            <ImageView fitHeight="58.0" fitWidth="62.0" layoutX="25.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/bill.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="102.0" layoutY="11.0" prefHeight="25.0" prefWidth="90.0" text="Bills" textFill="#2fd170">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="102.0" layoutY="34.0" prefHeight="26.0" prefWidth="352.0" text="Monitor your repetitive bill such as electricity , rent , Internet ,etc" textFill="#262b28" />
+            <ImageView fitHeight="34.0" fitWidth="48.0" layoutX="646.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/chevron.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
