@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane prefHeight="608.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aptech.Controller.HelloController">
+   <children>
+      <Label alignment="CENTER" layoutX="272.0" layoutY="14.0" prefHeight="51.0" prefWidth="600.0" text="User Management" textFill="#1bd124" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="22.0" />
+         </font>
+      </Label>
+      <Pane layoutY="66.0" prefHeight="133.0" prefWidth="200.0" style="-fx-border-color: #ccc;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <ImageView fitHeight="85.0" fitWidth="86.0" layoutX="30.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Image/account.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="133.0" layoutY="45.0" text="Welcome" textFill="#9c9c9c" />
+            <Label layoutX="132.0" layoutY="79.0" text="VanTien2003" textFill="#21c8e1">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="43.0" fitWidth="41.0" layoutX="623.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Image/logout.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutY="223.0" prefHeight="279.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label layoutX="94.0" layoutY="31.0" text="My wallet">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="94.0" layoutY="87.0" text="Profile">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <FontIcon iconLiteral="fas-user-alt" iconSize="28" layoutX="46.0" layoutY="106.0" wrappingWidth="26.999999999999886" />
+            <FontIcon iconLiteral="fas-wallet" iconSize="28" layoutX="46.0" layoutY="51.0" />
+            <FontIcon iconLiteral="fas-cog" iconSize="28" layoutX="47.0" layoutY="164.0" wrappingWidth="26.999999999999886" />
+            <FontIcon iconLiteral="fas-angle-right" iconSize="28" layoutX="541.0" layoutY="51.0" wrappingWidth="17.400024414062386" />
+            <FontIcon iconLiteral="fas-angle-right" iconSize="28" layoutX="541.0" layoutY="106.0" text="" wrappingWidth="17.400024414062386" />
+            <FontIcon iconLiteral="fas-angle-right" iconSize="28" layoutX="541.0" layoutY="165.0" wrappingWidth="17.400024414062386" />
+            <Label layoutX="94.0" layoutY="144.0" text="Setting">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <AnchorPane layoutY="1675.0" prefHeight="118.0" prefWidth="722.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="500.0">
+         <children>
+            <Label layoutX="61.0" layoutY="67.0" prefHeight="18.0" prefWidth="45.0" text="Home">
+               <font>
+                  <Font name="Calibri" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="617.0" layoutY="67.0" prefHeight="18.0" prefWidth="57.0" text="Account">
+               <font>
+                  <Font name="Calibri" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="466.0" layoutY="67.0" prefHeight="18.0" prefWidth="62.0" text="Planning">
+               <font>
+                  <Font name="Calibri" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="190.0" layoutY="67.0" prefHeight="18.0" prefWidth="83.0" text="Transactions">
+               <font>
+                  <Font name="Calibri" size="16.0" />
+               </font>
+            </Label>
+            <FontIcon iconLiteral="fas-home" iconSize="34" layoutX="61.0" layoutY="55.0" />
+            <FontIcon fx:id="transaction" iconLiteral="fas-book" iconSize="34" layoutX="217.0" layoutY="55.0" />
+            <FontIcon fx:id="planning" iconLiteral="fas-clipboard-list" iconSize="36" layoutX="484.0" layoutY="57.0" text="" />
+            <FontIcon fx:id="accountUser" iconLiteral="fas-user-circle" iconSize="34" layoutX="630.0" layoutY="56.0" text="" />
+            <FontIcon fx:id="addNew" fill="#28992a" iconLiteral="fas-plus-circle" iconSize="60" layoutX="335.0" layoutY="74.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
