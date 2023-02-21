@@ -72,7 +72,6 @@ public class MoneyFixedController implements Initializable {
                throw new RuntimeException(e);
            }
         };
-
         executor.schedule(task, 1, TimeUnit.SECONDS);
         executor.shutdown();
         add_months.setOnAction(e ->{
