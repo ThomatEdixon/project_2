@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="220.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aptech.Controller.SpendingPlan.ItemController">
+   <children>
+      <Label fx:id="o_title" alignment="CENTER" prefHeight="31.0" prefWidth="229.0" style="-fx-background-color: #586fe7;" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="o_foodDrink" layoutX="15.0" layoutY="42.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Foods &amp; Drinks" />
+      <ImageView fitHeight="31.0" fitWidth="30.0" layoutX="34.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true" style="visibility: 21;">
+         <image>
+            <Image url="@../Image/foodDrink.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="o_clothes" layoutX="15.0" layoutY="96.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Clothes" />
+      <ImageView fitHeight="30.0" fitWidth="52.0" layoutX="34.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/fashion.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="o_petroleum" layoutX="15.0" layoutY="151.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Petroleum" />
+      <ImageView fitHeight="30.0" fitWidth="52.0" layoutX="34.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/Petroleum.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
