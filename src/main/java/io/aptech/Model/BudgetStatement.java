@@ -3,7 +3,13 @@ package io.aptech.Model;
 import io.aptech.Generic.DAORepository;
 import javafx.collections.ObservableList;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class BudgetStatement implements DAORepository {
+    public Connection connection = MySQLConnection.getConnection();
     @Override
     public void insert(Object o) {
 
@@ -16,9 +22,20 @@ public class BudgetStatement implements DAORepository {
 
     @Override
     public Object getById(int id) {
-        return null;
-    }
+        ResultSet rs = null;
+        try {
+            String sql = "SELECT * FROM tbl_budget WHERE user_id = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1,id);
+            rs = stm.executeQuery();
+            System.out.println("123456");
 
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return rs;
+    }
     @Override
     public void delete(Object o) {
 
