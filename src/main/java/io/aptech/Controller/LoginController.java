@@ -51,7 +51,7 @@ private Button change_passowrd;
                 lg_userName.setStyle("-fx-border-color:  red");
                 checkUserName = "NO";
             }else if(RegisterValidation.checkEmail(userName).equals("NO")){
-                err_userName.setText("Email is required");
+                err_userName.setText("Username is required");
                 checkUserName = "NO";
             }else  {
                 lg_userName.setStyle("-fx-border-color: black");
@@ -71,19 +71,32 @@ private Button change_passowrd;
                 try {
                     if(user.next()){
                         if(BCrypt.checkpw(password,user.getString("user_password"))) {
+                            User user1 = new User();
+                            user1.setId(user.getInt("id"));
+                            //close window
                             Node node = (Node) e.getSource();
                             Stage thisStage = (Stage) node.getScene().getWindow();
                             thisStage.close();
                             //Loading Main Widows
-                            loadMainWindows("/io/aptech/project/hello-view.fxml");
-                            //User info
+                            try {
+                                Stage loginStage = new Stage();
+                                FXMLLoader loader = new FXMLLoader();
+                                loader.setLocation(getClass().getResource("/MainWindow/homePage.fxml"));
+                                Parent root = loader.load();
+                                HomePageController homePageController = loader.getController();
+                                homePageController.getUser(user1);
+                                Scene loginScene = new Scene(root,700, 690);
+                                loginStage.setTitle("Home Page");
+                                loginStage.setScene(loginScene);
+                                loginStage.show();
+                            }catch (IOException e1){
+                                e1.printStackTrace();
+                            }
                         }else{
                             err_login.setText("UserName or Password is invalid");
                             err_login.setStyle("-fx-text-fill: #E53935");
                         }
                     }
-
-
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -91,7 +104,10 @@ private Button change_passowrd;
 
         });
         change_passowrd.setOnAction(e ->{
-            loadMainWindows("/io/aptech/project/hello-view.fxml");
+            Node node = (Node) e.getSource();
+            Stage thisStage = (Stage) node.getScene().getWindow();
+            thisStage.close();
+            loadMainWindows("/User/forgotPassword.fxml");
         });
         lg_register.setOnAction(e ->{
             Node node = (Node) e.getSource();

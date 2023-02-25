@@ -55,6 +55,7 @@ public class EditEventController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        edit_id.setVisible(false);
         exits_editevent.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {

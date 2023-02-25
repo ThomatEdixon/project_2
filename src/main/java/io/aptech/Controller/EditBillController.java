@@ -63,6 +63,8 @@ public class EditBillController implements Initializable {
                 Node node = (Node) event.getSource();
                 Stage thisStage = (Stage) node.getScene().getWindow();
                 thisStage.close();
+                // load window
+                loadBillWindow();
             }
         });
         btn_editBill.setOnAction(e->{

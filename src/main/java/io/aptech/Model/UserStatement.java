@@ -14,7 +14,7 @@ public class UserStatement implements DAORepository<User> {
     @Override
     public void insert(User user) {
         try{
-            String sql = "Insert into tbl_user (full_name,user_name,user_password,email,phone)"
+            String sql = "Insert into tbl_user (full_name,user_name,user_password,user_email,user_phone)"
                     +" VALUES "
                     +"(?,?,?,?,?)";
             PreparedStatement pst = connection.prepareStatement(sql);
@@ -43,7 +43,7 @@ public class UserStatement implements DAORepository<User> {
     public ResultSet getBYUserName(String userName){
         ResultSet user = null;
         try {
-            String sql = "select * from tbl_user where email = ?";
+            String sql = "select * from tbl_user where user_email = ?";
 
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1,userName);

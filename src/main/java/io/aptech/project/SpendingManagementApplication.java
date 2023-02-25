@@ -12,10 +12,10 @@ public class SpendingManagementApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/spendingPlan/plan.fxml"));
+        loader.setLocation(getClass().getResource("/User/login.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root, 730, 670);
-        stage.setTitle("Planning");
+        Scene scene = new Scene(root, 570, 461);
+        stage.setTitle("Login");
         stage.setScene(scene);
         stage.show();
     }
