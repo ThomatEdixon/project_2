@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="428.0" prefWidth="600.0" style="-fx-background-color: #fff; -fx-border-color: #bdbdbd;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aptech.Controller.TransactionsController">
+<AnchorPane prefHeight="428.0" prefWidth="600.0" style="-fx-background-color: #fff; -fx-border-color: #bdbdbd;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aptech.Controller.AddTransactionsController">
    <children>
       <Label layoutX="77.0" layoutY="14.0" prefHeight="52.0" prefWidth="600.0" style="-fx-background-color: #fff;" text="Add Transaction" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <padding>
@@ -38,5 +38,6 @@
       <FontIcon iconLiteral="fas-notes-medical" iconSize="34" layoutX="63.0" layoutY="176.0" />
       <FontIcon iconLiteral="fas-clipboard-list" iconSize="34" layoutX="65.0" layoutY="319.0" />
       <FontIcon iconLiteral="fas-donate" iconSize="33" layoutX="61.0" layoutY="108.0" text="" />
+      <Label fx:id="user_id" layoutX="188.0" layoutY="19.0" />
    </children>
 </AnchorPane>

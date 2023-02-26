@@ -61,4 +61,8 @@ public class Category {
     public void setEnd(Date end) {
         this.end = end;
     }
+    @Override
+    public String toString() {
+        return String.valueOf(getCategoryTransaction());
+    }
 }

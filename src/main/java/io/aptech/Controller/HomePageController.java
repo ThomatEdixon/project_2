@@ -135,6 +135,8 @@ public class HomePageController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/Transactions/transaction.fxml"));
             Parent root = loader.load();
+            AddTransactionsController transactionsController = loader.getController();
+            transactionsController.getUserId(Integer.parseInt(user_id.getText()));
             Scene loginScene = new Scene(root,719, 429);
             loginStage.setTitle("Add New");
             loginStage.setScene(loginScene);
@@ -150,6 +152,10 @@ public class HomePageController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/Planning/planning.fxml"));
             Parent root = loader.load();
+            PlanningController planningController = loader.getController();
+            User user = new User();
+            user.setId(Integer.parseInt(user_id.getText()));
+            planningController.getUser(user);
             Scene loginScene = new Scene(root,730, 650);
             loginStage.setTitle("Planning");
             loginStage.setScene(loginScene);

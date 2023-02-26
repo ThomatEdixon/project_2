@@ -1,5 +1,6 @@
 package io.aptech.Controller;
 
+import io.aptech.Entity.User;
 import io.aptech.Model.BillsStatement;
 import io.aptech.Model.EventsStatement;
 import io.aptech.Model.MoneyPlanStatement;
@@ -9,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.kordamp.ikonli.javafx.FontIcon;
@@ -27,11 +29,16 @@ public class PlanningController implements Initializable {
     @FXML private FontIcon planning;
     @FXML private FontIcon accountUser;
     @FXML private FontIcon home;
+    @FXML private Label user_id;
     private static EventsStatement eventsStatement = new EventsStatement();
     private static BillsStatement billsStatement = new BillsStatement();
     private static MoneyPlanStatement moneyPlanStatement = new MoneyPlanStatement();
+    public void getUser(User user){
+        user_id.setText(String.valueOf(user.getId()));
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        user_id.setVisible(false);
         planning_event.setOnMouseClicked(e->{
             eventsStatement.create();
             // close window

@@ -12,7 +12,7 @@
    <children>
       <Label layoutY="-6.0" prefHeight="64.0" prefWidth="694.0" text="Planning" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <padding>
-            <Insets left="10.0" />
+            <Insets left="50.0" />
          </padding>
          <font>
             <Font name="Calibri Bold" size="19.0" />
@@ -127,5 +127,7 @@
             <FontIcon fx:id="addNew" fill="#28992a" iconLiteral="fas-plus-circle" iconSize="60" layoutX="335.0" layoutY="74.0" />
          </children>
       </AnchorPane>
+      <Label fx:id="user_id" layoutX="131.0" layoutY="23.0" />
+      <FontIcon fx:id="icon_back_page" iconLiteral="fas-arrow-left" iconSize="19" layoutX="21.0" layoutY="39.0" />
    </children>
 </AnchorPane>
