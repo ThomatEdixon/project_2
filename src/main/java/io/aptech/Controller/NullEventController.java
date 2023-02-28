@@ -29,10 +29,15 @@ public class NullEventController implements Initializable {
     @FXML private Label event_all;
     @FXML private Label events_running;
     @FXML private Label events_finished;
+    @FXML private Label user_id;
     private ObservableList<Events> events;
     private EventsStatement eventsStatement = new EventsStatement();
+    public void getUserId(int id){
+        user_id.setText(String.valueOf(id));
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        user_id.setVisible(false);
         event_all.setOnMouseClicked(e->{
             event_all.setStyle("-fx-text-fill: #000000");
             events_running.setStyle("-fx-text-fill: #f0f0f0");

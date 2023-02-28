@@ -14,8 +14,8 @@ public class SpendingManagementApplication extends Application {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/User/login.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root, 600, 654);
-        stage.setTitle("Planning");
+        Scene scene = new Scene(root, 570, 461);
+        stage.setTitle("Login");
         stage.setScene(scene);
         stage.show();
     }

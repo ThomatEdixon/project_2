@@ -30,6 +30,7 @@ public class EventsController implements Initializable {
     @FXML private Label event_all;
     @FXML private Label events_running;
     @FXML private Label events_finished;
+    @FXML private Label user_id;
     @FXML private TableView<Events> tbl_events = new TableView<Events>();
     @FXML private TableColumn<Events,String> c_name;
     @FXML private TableColumn<Events,Integer> c_spent;
@@ -41,9 +42,12 @@ public class EventsController implements Initializable {
 
     public EventsController() {
     }
-
+    public void getUserId(int id){
+        user_id.setText(String.valueOf(id));
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        user_id.setVisible(false);
         eventsStatement.create();
         events = eventsStatement.getAll();
         tbl_events.getColumns().get(4).setVisible(false);
@@ -116,7 +120,8 @@ public class EventsController implements Initializable {
                 loader.setLocation(getClass().getResource("/Events/editEvent.fxml"));
                 Pane viewEdit = loader.load();
                 Scene scene = new Scene(viewEdit);
-                EditEventController editEventController = loader.getController()    ;
+                EditEventController editEventController = loader.getController();
+                editEventController.getUserId(user_id.getText());
                 editEventController.getEvents(editEvent);
                 stage.setTitle("Edit Event");
                 stage.setScene(scene);
@@ -136,6 +141,8 @@ public class EventsController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/Events/addEvent.fxml"));
             Parent root = loader.load();
+            AddEventController controller = loader.getController();
+            controller.getUserId(Integer.parseInt(user_id.getText()));
             Scene loginScene = new Scene(root,600, 400);
             dddEventStage.setTitle("Add Event");
             dddEventStage.setScene(loginScene);

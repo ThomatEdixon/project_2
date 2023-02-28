@@ -28,7 +28,7 @@ public class ForgotPasswordStatement implements DAORepository<User> {
     public ResultSet check(String email, String phone) {
         ResultSet rs = null;
         try {
-            String sql = "SELECT * FROM tbl_user WHERE email =? AND phone =?";
+            String sql = "SELECT * FROM tbl_user WHERE user_email =? AND user_phone =?";
             PreparedStatement pst = connection.prepareStatement(sql);
             pst.setString(1, email);
             pst.setString(2, phone);

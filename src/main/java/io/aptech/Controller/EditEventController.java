@@ -1,6 +1,7 @@
 package io.aptech.Controller;
 
 import io.aptech.Entity.Events;
+import io.aptech.Model.AddBudgetStatement;
 import io.aptech.Model.EditStatement;
 import io.aptech.Model.EventsStatement;
 import javafx.event.EventHandler;
@@ -40,21 +41,32 @@ public class EditEventController implements Initializable {
     @FXML private Label err_edit_spent;
     @FXML private Label err_edit_startdate;
     @FXML private Label err_edit_enddate;
+    @FXML private Label user_id;
     private static EditStatement editStatement = new EditStatement();
     private static EventsStatement eventsStatement = new EventsStatement();
+    private static AddBudgetStatement addBudgetStatement = new AddBudgetStatement();
+    private static int balance = 0;
+    public void getUserId(String id){
+        user_id.setText(id);
+    }
     public void getEvents(Events event){
         edit_id.setText(String.valueOf(event.getId()));
         editEventName.setText(event.getName());
         editEventSpent.setText(String.valueOf(event.getSpent()));
         editStartDateEvent.setValue(asLocalDate(event.getStartDate()));
         editEndDateEvent.setValue(asLocalDate(event.getEndDate()));
+        balance = addBudgetStatement.getBalance(Integer.parseInt(user_id.getText()));
+        System.out.println(balance);
+        balance += event.getSpent();
+        System.out.println(balance);
     }
     public static LocalDate asLocalDate(Date date) {
         return Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        edit_id.setVisible(false);
+        user_id.setVisible(false);
         exits_editevent.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -92,6 +104,7 @@ public class EditEventController implements Initializable {
                 err_edit_spent.setText("Event spent is required");
                 err_edit_spent.setStyle("-fx-text-fill: #ff1744");
             }else {
+                balance -= Integer.parseInt(eventSpent);
                 checkEventSpent = "YES";
                 err_edit_spent.setText("");
             }
@@ -119,6 +132,7 @@ public class EditEventController implements Initializable {
                 event.setEndDate(eventEndDate);
                 event.setId(id);
                 editStatement.update(event);
+                addBudgetStatement.updateBalance(balance);
                 //close window
                 Node node = (Node) e.getSource();
                 Stage thisStage = (Stage) node.getScene().getWindow();
@@ -131,6 +145,7 @@ public class EditEventController implements Initializable {
             Events event = new Events();
             event.setId(Integer.parseInt(edit_id.getText()));
             editStatement.delete(event);
+            addBudgetStatement.updateBalance(balance);
             // close window
             Node node = (Node) e.getSource();
             Stage thisStage = (Stage) node.getScene().getWindow();
@@ -149,6 +164,8 @@ public class EditEventController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/Events/events.fxml"));
             Parent root = loader.load();
+            EventsController controller = loader.getController();
+            controller.getUserId(Integer.parseInt(user_id.getText()));
             Scene eventScene = new Scene(root,700,690);
             eventStage.setTitle("Events");
             eventStage.setScene(eventScene);
@@ -164,6 +181,8 @@ public class EditEventController implements Initializable {
             loader.setLocation(getClass().getResource("/Events/nullEvents.fxml"));
             Parent root = loader.load();
             Scene eventScene = new Scene(root,700,690);
+            NullEventController controller = loader.getController();
+            controller.getUserId(Integer.parseInt(user_id.getText()));
             nullEventStage.setTitle("Events");
             nullEventStage.setScene(eventScene);
             nullEventStage.show();

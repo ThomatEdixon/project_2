@@ -1,0 +1,40 @@
+1. Main window
+	1.1 hiển thị số dư
+		1.1.1 hiển thị số tiền hiện tại
+		1.1.2 cập nhập số tiền sau giao dịch(giao dịch xong )
+	1.2 bảng báo cáo chi tiêu tuần/tháng
+		1.2.1 hiển thị thông tin chi tiết giao dịch theo tùng ngày
+		1.2.2 tổng số tiền đã chi
+	1.3 hiển thị giao dịch gần nhất
+		1.3.1 hiển thông tin chi tiết giao dịch
+2. Sổ giao dịch
+	2.1 hiển thị số dư
+		2.1.1 hiển thị số tiền hiện tại
+		2.1.2 cập nhập số tiền sau giao dịch
+	2.2 hiển thị giao dịch theo mốc thời gian
+		2.2.1 nhập ngày bắt đầu và kết thúc 
+		2.2.2 danh sách các giao dịch trong khoảng thời gian
+		2.2.3 tổng tiền đã chi tiết trong thời gian 
+3. Lập kế hoạch
+	3.1 ngân sách dự tính
+		3.1.1 danh sách các lựa chọn khoản chi tiêu (ăn , uống , đi du lịch ..)
+		3.1.2 nhập số tiền dự tính chi cho các khoản
+	3.2 Sự kiện
+		3.2.1 thông tin chi tiết về sự kiện sẽ diễn ra 
+		3.2.2 dự tính số tiền chi ra
+	3.3 giao dịch định kì 
+		3.3.1 thêm các giao dịch định kì
+		3.3.2 nhập khoản chí phí dự tính bỏ ra
+		3.3.3 ngày kết thúc giao dịch 
+	3.4 hóa đơn
+		3.4.1 thông tin các hóa đơn đang thục hiện (tiền điện , nước)
+		3.4.2 ngày kết thúc hóa đơn 
+		3.4.3 chi phí bỏ ra theo hóa đơn
+4. Quản lý tài khoản
+	4.1 thông tin tài khoản
+		4.1.1 hiển thị chi tiết thông tin tk 
+		4.1.2 cho phép người dung sửa thông tin cơ bản
+		4.1.3 cho phép người dùng cập nhập số dư tk
+5. Thêm giao dịch
+	5.1 thông tin giao dịch
+	 

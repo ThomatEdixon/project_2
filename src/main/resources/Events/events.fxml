@@ -45,6 +45,7 @@
                   <Font name="Calibri Bold" size="16.0" />
                </font>
             </Label>
+            <Label fx:id="user_id" layoutX="147.0" layoutY="29.0" prefHeight="18.0" prefWidth="27.0" />
          </children>
          <BorderPane.margin>
             <Insets bottom="-2.0" />

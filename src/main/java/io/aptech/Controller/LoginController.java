@@ -40,7 +40,6 @@ public class LoginController implements Initializable {
     private Button change_password;
     @FXML
     private Button lg_register;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lg_submit.setOnAction(e ->{
@@ -99,6 +98,8 @@ public class LoginController implements Initializable {
                             err_login.setStyle("-fx-text-fill: #E53935");
                         }
                     }
+
+
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -120,6 +121,17 @@ public class LoginController implements Initializable {
         });
     }
     public void loadMainWindows(String path){
-
+        try {
+            Stage loginStage = new Stage();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(path));
+            Parent root = loader.load();
+            Scene loginScene = new Scene(root,600, 502);
+            loginStage.setTitle("Login");
+            loginStage.setScene(loginScene);
+            loginStage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }

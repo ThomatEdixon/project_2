@@ -2,6 +2,7 @@ package io.aptech.Controller;
 
 import io.aptech.Entity.Bills;
 import io.aptech.Entity.Events;
+import io.aptech.Model.AddBudgetStatement;
 import io.aptech.Model.EditBillStatement;
 import io.aptech.Model.EditStatement;
 import io.aptech.Model.EventsStatement;
@@ -42,14 +43,24 @@ public class EditBillController implements Initializable {
     @FXML private Label err_edit_spent;
     @FXML private Label err_edit_startdate;
     @FXML private Label err_edit_enddate;
+    @FXML private Label user_id;
     private static EditBillStatement editBillStatement = new EditBillStatement();
     private static EventsStatement eventsStatement = new EventsStatement();
+    private static AddBudgetStatement addBudgetStatement = new AddBudgetStatement();
+    private static int balance = 0;
+    public void getUserId(int id){
+        user_id.setText(String.valueOf(id));
+    }
     public void getBills(Bills bill){
         edit_id.setText(String.valueOf(bill.getId()));
         editBillName.setText(bill.getName());
         editbillESpent.setText(String.valueOf(bill.getSpent()));
         editStartDateBill.setValue(asLocalDate(bill.getStartDate()));
         editEndDateBill.setValue(asLocalDate(bill.getEndDate()));
+        balance = addBudgetStatement.getBalance(Integer.parseInt(user_id.getText()));
+        System.out.println(balance);
+        balance += bill.getSpent();
+        System.out.println(balance);
     }
     public static LocalDate asLocalDate(Date date) {
         return Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
@@ -57,12 +68,16 @@ public class EditBillController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        user_id.setVisible(false);
+        edit_id.setVisible(false);
         exits_editevent.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 Node node = (Node) event.getSource();
                 Stage thisStage = (Stage) node.getScene().getWindow();
                 thisStage.close();
+                // load window
+                loadBillWindow();
             }
         });
         btn_editBill.setOnAction(e->{
@@ -93,7 +108,13 @@ public class EditBillController implements Initializable {
                 checkEventSpent = "NO";
                 err_edit_spent.setText("Event spent is required");
                 err_edit_spent.setStyle("-fx-text-fill: #ff1744");
-            }else {
+            }else if (balance < Integer.parseInt(eventSpent)) {
+                checkEventSpent = "NO";
+                err_edit_spent.setText("Balance not enough");
+                err_edit_spent.setStyle("-fx-text-fill: #ff1744");
+            }
+            else {
+                balance -= Integer.parseInt(eventSpent);
                 checkEventSpent = "YES";
                 err_edit_spent.setText("");
             }
@@ -121,6 +142,7 @@ public class EditBillController implements Initializable {
                 bill.setEndDate(eventEndDate);
                 bill.setId(id);
                 editBillStatement.update(bill);
+                addBudgetStatement.updateBalance(balance);
                 //close window
                 Node node = (Node) e.getSource();
                 Stage thisStage = (Stage) node.getScene().getWindow();
@@ -133,6 +155,7 @@ public class EditBillController implements Initializable {
             Bills bills = new Bills();
             bills.setId(Integer.parseInt(edit_id.getText()));
             editBillStatement.delete(bills);
+            addBudgetStatement.updateBalance(balance);
             // close window
             Node node = (Node) e.getSource();
             Stage thisStage = (Stage) node.getScene().getWindow();
@@ -151,6 +174,8 @@ public class EditBillController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/Bill/bills.fxml"));
             Parent root = loader.load();
+            BillsController controller = loader.getController();
+            controller.getUserId(Integer.parseInt(user_id.getText()));
             Scene eventScene = new Scene(root,700,690);
             eventStage.setTitle("Bills");
             eventStage.setScene(eventScene);
@@ -166,6 +191,8 @@ public class EditBillController implements Initializable {
             loader.setLocation(getClass().getResource("/Bill/nullBills.fxml"));
             Parent root = loader.load();
             Scene eventScene = new Scene(root,700,690);
+            NullBillController controller = loader.getController();
+            controller.getUserId(Integer.parseInt(user_id.getText()));
             nullEventStage.setTitle("Bills");
             nullEventStage.setScene(eventScene);
             nullEventStage.show();

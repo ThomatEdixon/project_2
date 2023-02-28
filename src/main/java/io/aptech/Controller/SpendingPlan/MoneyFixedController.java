@@ -4,7 +4,6 @@ import io.aptech.Controller.LoadMainWindows;
 import io.aptech.Entity.MoneyFixed;
 import io.aptech.Model.BudgetStatement;
 import io.aptech.Model.MoneyPlanStatement;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

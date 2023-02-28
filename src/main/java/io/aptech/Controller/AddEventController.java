@@ -1,6 +1,7 @@
 package io.aptech.Controller;
 
 import io.aptech.Entity.Events;
+import io.aptech.Model.AddBudgetStatement;
 import io.aptech.Model.AddEventStatement;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -37,9 +38,15 @@ public class AddEventController implements Initializable {
     @FXML private Label err_add_spent;
     @FXML private Label err_add_startdate;
     @FXML private Label err_add_enddate;
+    @FXML private Label user_id;
     private static AddEventStatement addEventStatement = new AddEventStatement();
+    private static AddBudgetStatement addBudgetStatement = new AddBudgetStatement();
+    public void getUserId(int id){
+        user_id.setText(String.valueOf(id));
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        user_id.setVisible(false);
         exits_addevent.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -55,6 +62,7 @@ public class AddEventController implements Initializable {
             String eventSpent = addEventSpent.getText();
             Date eventStartDate = Date.valueOf("1000-01-28");
             Date eventEndDate = Date.valueOf("1000-01-28");
+            int balance = addBudgetStatement.getBalance(Integer.parseInt(user_id.getText()));
             if(startDateEvent.getValue() != null){
                 eventStartDate = Date.valueOf(startDateEvent.getValue());
             }
@@ -77,7 +85,12 @@ public class AddEventController implements Initializable {
                 checkEventSpent = "NO";
                 err_add_spent.setText("Event spent is required");
                 err_add_spent.setStyle("-fx-text-fill: #ff1744");
+            }else if (balance < Integer.parseInt(eventSpent)) {
+                checkEventSpent = "NO";
+                err_add_spent.setText("Balance not enough");
+                err_add_spent.setStyle("-fx-text-fill: #ff1744");
             }else {
+                balance -= Integer.parseInt(eventSpent);
                 checkEventSpent = "YES";
                 err_add_spent.setText("");
             }
@@ -104,6 +117,8 @@ public class AddEventController implements Initializable {
                 event.setStartDate(eventStartDate);
                 event.setEndDate(eventEndDate);
                 addEventStatement.insert(event);
+                // update balance
+                addBudgetStatement.updateBalance(balance);
                 //close window
                 Node node = (Node) e.getSource();
                 Stage thisStage = (Stage) node.getScene().getWindow();
@@ -120,6 +135,8 @@ public class AddEventController implements Initializable {
             loader.setLocation(getClass().getResource("/Events/events.fxml"));
             Parent root = loader.load();
             Scene eventScene = new Scene(root,730, 690);
+            EventsController controller = loader.getController();
+            controller.getUserId(Integer.parseInt(user_id.getText()));
             eventStage.setTitle("Events");
             eventStage.setScene(eventScene);
             eventStage.show();

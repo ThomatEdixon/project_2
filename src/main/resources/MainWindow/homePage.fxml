@@ -79,7 +79,6 @@
                                     <Label layoutX="514.0" layoutY="21.0" prefHeight="18.0" prefWidth="40.0" text="0 VND" />
                                     <ImageView fitHeight="28.0" fitWidth="34.0" layoutX="15.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../Image/wallet.png" />
                                           <Image url="@../Image/wallet2.png" />
                                        </image>
                                     </ImageView>

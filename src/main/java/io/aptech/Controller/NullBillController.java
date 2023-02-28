@@ -23,11 +23,16 @@ public class NullBillController implements Initializable {
     @FXML private ImageView events_back_page;
     @FXML private Label bill_all;
     @FXML private Label bills_running;
+    @FXML private Label user_id;
     @FXML private Label bills_finished;
     private ObservableList<Bills> bills;
     private static BillsStatement billsStatement = new BillsStatement();
+    public void getUserId(int id){
+        user_id.setText(String.valueOf(id));
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        user_id.setVisible(false);
         bill_all.setOnMouseClicked(e->{
             bill_all.setStyle("-fx-text-fill: #000000");
             bills_running.setStyle("-fx-text-fill: #f0f0f0");
@@ -66,6 +71,8 @@ public class NullBillController implements Initializable {
             loader.setLocation(getClass().getResource("/Bill/addBill.fxml"));
             Parent root = loader.load();
             Scene loginScene = new Scene(root,600, 400);
+            AddBillController addBillController = loader.getController();
+            addBillController.getUserId(Integer.parseInt(user_id.getText()));
             dddEventStage.setTitle("Add Event");
             dddEventStage.setScene(loginScene);
             dddEventStage.show();
