@@ -5,6 +5,7 @@ import io.aptech.Entity.Transactions;
 import io.aptech.Entity.User;
 import io.aptech.Model.AddBudgetStatement;
 import io.aptech.Model.AddTransactionStatement;
+import io.aptech.Model.UserStatement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -114,17 +115,17 @@ public class AddTransactionsController implements Initializable {
                 Stage thisStage = (Stage) node.getScene().getWindow();
                 thisStage.close();
                 // load home page
-                loadHomePage();
+                loadHomeWindow();
             }
         });
         icon_back_page.setOnMouseClicked(e->{
             Node node = (Node) e.getSource();
             Stage thisStage = (Stage) node.getScene().getWindow();
             thisStage.close();
-            loadHomePage();
+            loadHomeWindow();
         });
     }
-    public void loadHomePage() {
+    public void loadHomeWindow(){
         try {
             Stage loginStage = new Stage();
             FXMLLoader loader = new FXMLLoader();
@@ -132,10 +133,12 @@ public class AddTransactionsController implements Initializable {
             Parent root = loader.load();
             Scene loginScene = new Scene(root,719, 429);
             HomePageController controller = loader.getController();
-            User user = new User();
-            user.setId(Integer.parseInt(user_id.getText()));
+            UserStatement userStatement = new UserStatement();
+            User user = userStatement.getUserById(Integer.parseInt(user_id.getText()));
+            user.setId(user.getId());
+            user.setFullName(user.getFullName());
             controller.getUser(user);
-            loginStage.setTitle("Add New");
+            loginStage.setTitle("transactions");
             loginStage.setScene(loginScene);
             loginStage.show();
         }catch (IOException e){

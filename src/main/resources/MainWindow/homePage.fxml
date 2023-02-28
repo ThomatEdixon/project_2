@@ -27,19 +27,19 @@
                      <children>
                         <Pane layoutX="-15.0" layoutY="-6.0" prefHeight="200.0" prefWidth="744.0" style="-fx-background-color: #33CCFF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
-                              <Label layoutX="25.0" layoutY="21.0" prefHeight="27.0" prefWidth="216.0" style="-fx-font-weight: bold;" text="Hello VanTien2003!" textFill="WHITE">
+                              <Label fx:id="user_name" layoutX="97.0" layoutY="20.0" prefHeight="27.0" prefWidth="138.0" style="-fx-font-weight: bold;" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
                               <Pane layoutX="43.0" layoutY="61.0" prefHeight="118.0" prefWidth="634.0" style="-fx-background-radius: 10; -fx-background-color: #fff;">
                                  <children>
-                                    <Label fx:id="balance" layoutX="27.0" layoutY="21.0" prefHeight="21.0" prefWidth="96.0" text="Total balance">
+                                    <Label fx:id="addBalance" layoutX="27.0" layoutY="21.0" prefHeight="21.0" prefWidth="96.0" text="Total balance">
                                        <font>
                                           <Font name="System Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="moneyBalance" layoutX="27.0" layoutY="46.0" prefHeight="55.0" prefWidth="188.0" style="-fx-font-weight: 700;" text="500.000 VND" textFill="#00b6ff">
+                                    <Label fx:id="moneyBalance" layoutX="27.0" layoutY="46.0" prefHeight="55.0" prefWidth="188.0" style="-fx-font-weight: 700;" textFill="#00b6ff">
                                        <font>
                                           <Font size="30.0" />
                                        </font>
@@ -50,6 +50,11 @@
                                  </children>
                               </Pane>
                               <FontIcon iconLiteral="fas-bell" iconSize="22" layoutX="657.0" layoutY="42.0" text="" />
+                              <Label layoutX="43.0" layoutY="20.0" prefHeight="27.0" prefWidth="50.0" style="-fx-font-weight: bold;" text="Hello" textFill="WHITE">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </Pane>
                         <SplitPane dividerPositions="0.4811643835616438" layoutX="71.0" layoutY="227.0" orientation="VERTICAL" prefHeight="118.0" prefWidth="586.0" style="-fx-background-color: #fff; -fx-background-radius: 10;">

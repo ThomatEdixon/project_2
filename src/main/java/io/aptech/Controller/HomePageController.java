@@ -1,6 +1,7 @@
 package io.aptech.Controller;
 
 import io.aptech.Entity.User;
+import io.aptech.Model.AddBudgetStatement;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,13 +25,19 @@ public class HomePageController implements Initializable {
     @FXML private FontIcon btnEye;
     @FXML private Label moneyBalance;
     @FXML private Label user_id;
-    @FXML private Label balance;
+    @FXML private Label addBalance;
+    @FXML private Label user_name;
     private static int count = 0;
-
+    private static int balance = 0;
+    private static AddBudgetStatement addBudgetStatement = new AddBudgetStatement();
     public HomePageController() {
     }
     public void getUser(User user){
         user_id.setText(String.valueOf(user.getId()));
+        user_name.setText(user.getFullName());
+        balance = addBudgetStatement.getBalance(user.getId());
+        String type = addBudgetStatement.getType(user.getId());
+        moneyBalance.setText(balance+" "+type);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -41,7 +48,8 @@ public class HomePageController implements Initializable {
                 moneyBalance.setText("******** VND");
                 btnEye.setIconLiteral("fas-eye-slash");
             } else {
-                moneyBalance.setText("500.000 VND");
+                String type = addBudgetStatement.getType(Integer.parseInt(user_id.getText()));
+                moneyBalance.setText(balance+" "+type);
                 btnEye.setIconLiteral("fas-eye");
             }
         });
@@ -83,7 +91,7 @@ public class HomePageController implements Initializable {
             //Loading Main Widows
             loadAccountUserWindow();
         });
-        balance.setOnMouseClicked(event -> {
+        addBalance.setOnMouseClicked(event -> {
             try {
                 Stage loginStage = new Stage();
                 FXMLLoader loader = new FXMLLoader();
@@ -173,9 +181,14 @@ public class HomePageController implements Initializable {
         try {
             Stage loginStage = new Stage();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/Planning/planning.fxml"));
+            loader.setLocation(getClass().getResource("/MainWindow/UserManagement.fxml"));
             Parent root = loader.load();
-            Scene loginScene = new Scene(root,719, 429);
+            UserManagementController userManagementController = loader.getController();
+            User user = new User();
+            user.setId(Integer.parseInt(user_id.getText()));
+            user.setFullName(user_name.getText());
+            userManagementController.getUserById(user);
+            Scene loginScene = new Scene(root,695, 770);
             loginStage.setTitle("Account User");
             loginStage.setScene(loginScene);
             loginStage.show();

@@ -1,10 +1,7 @@
 package io.aptech.Controller;
 
-import io.aptech.Entity.Events;
 import io.aptech.Entity.User;
-import io.aptech.Model.EventsStatement;
 import io.aptech.Model.UserStatement;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,68 +10,108 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
 import java.util.ResourceBundle;
 
-public class NullEventController implements Initializable {
-    @FXML private Button btn_add_event;
-    @FXML private ImageView events_back_page;
-    @FXML private Label event_all;
-    @FXML private Label events_running;
-    @FXML private Label events_finished;
+public class UserManagementController implements Initializable {
+    @FXML private Circle imageUserProfile;
+    @FXML private Label lableUserProfile;
+    @FXML private Label userProfileName;
+    @FXML private FontIcon btnLogOut;
+    @FXML private FontIcon iconUserProfile;
+    @FXML private FontIcon btnUserProfile;
+    @FXML private Label lableUserProfile2;
     @FXML private Label user_id;
+    @FXML private FontIcon icon_back_page;
     @FXML private FontIcon transaction;
     @FXML private FontIcon addNew;
     @FXML private FontIcon planning;
     @FXML private FontIcon accountUser;
     @FXML private FontIcon home;
-    private ObservableList<Events> events;
-    private EventsStatement eventsStatement = new EventsStatement();
-    public void getUserId(int id){
-        user_id.setText(String.valueOf(id));
+
+    public void getUserById(User user) {
+        user_id.setText(String.valueOf(user.getId()));
+        userProfileName.setText(user.getFullName());
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         user_id.setVisible(false);
-        event_all.setOnMouseClicked(e->{
-            event_all.setStyle("-fx-text-fill: #000000");
-            events_running.setStyle("-fx-text-fill: #f0f0f0");
-            events_finished.setStyle("-fx-text-fill: #f0f0f0");
+        icon_back_page.setOnMouseClicked(e->{
+            // close window
+            Node node = (Node) e.getSource();
+            Stage thisStage = (Stage) node.getScene().getWindow();
+            thisStage.close();
+            //load window
+            loadHomeWindow();
         });
-        events_running.setOnMouseClicked(e->{
-            event_all.setStyle("-fx-text-fill: #f0f0f0");
-            events_finished.setStyle("-fx-text-fill: #f0f0f0");
-            events_running.setStyle("-fx-text-fill: #000000");
-        });
-        events_finished.setOnMouseClicked(e->{
-            events_running.setStyle("-fx-text-fill: #f0f0f0");
-            event_all.setStyle("-fx-text-fill: #f0f0f0");
-            events_finished.setStyle("-fx-text-fill: #000000");
-        });
-        events_back_page.setOnMouseClicked(e->{
+        imageUserProfile.setOnMousePressed(e -> {
             //close window
             Node node = (Node) e.getSource();
             Stage thisStage = (Stage) node.getScene().getWindow();
             thisStage.close();
             //load login window
-            loadPlanningWindow();
+            loadUserProfileWindow();
         });
-        btn_add_event.setOnAction(e->{
+
+        btnLogOut.setOnMouseClicked(e -> {
+            //close window
             Node node = (Node) e.getSource();
             Stage thisStage = (Stage) node.getScene().getWindow();
             thisStage.close();
             //load login window
-            loadAddEventWindow();
+            loadLogOutWindow();
+        });
+
+        lableUserProfile.setOnMouseClicked(e -> {
+            //close window
+            Node node = (Node) e.getSource();
+            Stage thisStage = (Stage) node.getScene().getWindow();
+            thisStage.close();
+            //load login window
+            loadUserProfileWindow();
+        });
+
+        userProfileName.setOnMouseClicked(e -> {
+            //close window
+            Node node = (Node) e.getSource();
+            Stage thisStage = (Stage) node.getScene().getWindow();
+            thisStage.close();
+            //load login window
+            loadUserProfileWindow();
+        });
+
+        btnUserProfile.setOnMouseClicked(e -> {
+            //close window
+            Node node = (Node) e.getSource();
+            Stage thisStage = (Stage) node.getScene().getWindow();
+            thisStage.close();
+            //load login window
+            loadUserProfileWindow();
+        });
+
+        iconUserProfile.setOnMouseClicked(e -> {
+            //close window
+            Node node = (Node) e.getSource();
+            Stage thisStage = (Stage) node.getScene().getWindow();
+            thisStage.close();
+            //load login window
+            loadUserProfileWindow();
+        });
+
+        lableUserProfile2.setOnMouseClicked(e -> {
+            //close window
+            Node node = (Node) e.getSource();
+            Stage thisStage = (Stage) node.getScene().getWindow();
+            thisStage.close();
+            //load login window
+            loadUserProfileWindow();
         });
         home.setOnMouseClicked(e->{
             Node node = (Node) e.getSource();
@@ -115,35 +152,36 @@ public class NullEventController implements Initializable {
             loadAccountUserWindow();
         });
     }
-    public void loadAddEventWindow(){
+
+    public void loadUserProfileWindow() {
         try {
-            Stage dddEventStage = new Stage();
+            Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/Events/addEvent.fxml"));
+            loader.setLocation(getClass().getResource("/MainWindow/UserProfile.fxml"));
             Parent root = loader.load();
-            Scene loginScene = new Scene(root,600, 400);
-            dddEventStage.setTitle("Add Event");
-            dddEventStage.setScene(loginScene);
-            dddEventStage.show();
-        }catch (IOException e){
+            UserProfileController userProfileController = loader.getController();
+            User user = new User();
+            user.setId(Integer.parseInt(user_id.getText()));
+            userProfileController.getUser(user);
+            Scene scene = new Scene(root, 545, 610);
+            stage.setTitle("User Profile");
+            stage.setScene(scene);
+            stage.show();
+        }catch(IOException e){
             e.printStackTrace();
         }
     }
-    public void loadPlanningWindow(){
+    public void loadLogOutWindow() {
         try {
-            Stage loginStage = new Stage();
+            Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/Planning/planning.fxml"));
+            loader.setLocation(getClass().getResource("/User/login.fxml"));
             Parent root = loader.load();
-            PlanningController planningController = loader.getController();
-            User user = new User();
-            user.setId(Integer.parseInt(user_id.getText()));
-            planningController.getUser(user);
-            Scene loginScene = new Scene(root,730, 650);
-            loginStage.setTitle("Planning");
-            loginStage.setScene(loginScene);
-            loginStage.show();
-        }catch (IOException e){
+            Scene scene = new Scene(root, 545, 610);
+            stage.setTitle("User Profile");
+            stage.setScene(scene);
+            stage.show();
+        }catch(IOException e){
             e.printStackTrace();
         }
     }
@@ -155,8 +193,10 @@ public class NullEventController implements Initializable {
             Parent root = loader.load();
             Scene loginScene = new Scene(root,719, 429);
             HomePageController controller = loader.getController();
-            User user = new User();
-            user.setId(Integer.parseInt(user_id.getText()));
+            UserStatement userStatement = new UserStatement();
+            User user = userStatement.getUserById(Integer.parseInt(user_id.getText()));
+            user.setId(user.getId());
+            user.setFullName(user.getFullName());
             controller.getUser(user);
             loginStage.setTitle("transactions");
             loginStage.setScene(loginScene);
@@ -197,6 +237,24 @@ public class NullEventController implements Initializable {
         }
     }
 
+    public void loadPlanningWindow(){
+        try {
+            Stage loginStage = new Stage();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/Planning/planning.fxml"));
+            Parent root = loader.load();
+            PlanningController planningController = loader.getController();
+            User user = new User();
+            user.setId(Integer.parseInt(user_id.getText()));
+            planningController.getUser(user);
+            Scene loginScene = new Scene(root,730, 650);
+            loginStage.setTitle("Planning");
+            loginStage.setScene(loginScene);
+            loginStage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
     public void loadAccountUserWindow(){
         try {
             Stage loginStage = new Stage();

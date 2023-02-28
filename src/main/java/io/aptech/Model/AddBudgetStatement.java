@@ -55,6 +55,21 @@ public class AddBudgetStatement implements DAORepository<Budget> {
         }
         return balance;
     }
+    public String getType(int id){
+        String type ="";
+        try{
+            String sql = "SELECT type_currency FROM tbl_budget WHERE user_id = ?";
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setInt(1,id);
+            ResultSet rs = pst.executeQuery();
+            if(rs.next()){
+                type = rs.getString("type_currency");
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return type;
+    }
     @Override
     public Budget getById(int id) {
         Budget budget = new Budget();

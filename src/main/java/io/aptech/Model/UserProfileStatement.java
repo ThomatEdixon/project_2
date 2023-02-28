@@ -10,21 +10,25 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserStatement implements DAORepository<User> {
+public class UserProfileStatement implements DAORepository<User> {
     private Connection connection = MySQLConnection.getConnection();
+
     @Override
     public void insert(User user) {
-        try{
-            String sql = "Insert into tbl_user (full_name,gender, user_password,user_email,user_phone, user_image)"
-                    +" VALUES "
-                    +"(?,?,?,?,?,?)";
+
+    }
+
+    @Override
+    public void update(User user) {
+        try {
+            String sql = "UPDATE tbl_user SET gender = ? , full_name = ?, user_email = ?, user_phone = ?, user_image = ? WHERE id =?";
             PreparedStatement pst = connection.prepareStatement(sql);
-            pst.setString(1, user.getFullName());
-            pst.setString(2, String.valueOf(user.getGender()));
-            pst.setString(3, user.getPassword());
-            pst.setString(4, user.getEmail());
-            pst.setString(5, user.getPhone());
-            pst.setString(6, user.getImage());
+            pst.setString(1, String.valueOf(user.getGender()));
+            pst.setString(2, user.getFullName());
+            pst.setString(3, user.getEmail());
+            pst.setString(4, user.getPhone());
+            pst.setString(5, user.getImage());
+            pst.setInt(6, user.getId());
             pst.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();
@@ -32,40 +36,17 @@ public class UserStatement implements DAORepository<User> {
     }
 
     @Override
-    public void update(User user) {
-
-    }
-
-    @Override
     public User getById(int id) {
-
-
         return null;
     }
-    public ResultSet getByEmail(String email){
-        ResultSet user = null;
-        try {
-            String sql = "select * from tbl_user where user_email = ?";
 
-            PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setString(1,email);
-            user = stm.executeQuery();
-
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        return user;
-    }
-
-    public User getUserById(int id){
+    public User getUserById(int id) {
         User user = new User();
-
-        try {
-            String sql = "SELECT * FROM tbl_user where id = ?";
-
-            PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setInt(1,id);
-            ResultSet rs = stm.executeQuery();
+        try{
+            String sql = "SELECT * FROM tbl_user WHERE id =?";
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
             if(rs.next()){
                 int user_id = rs.getInt("id");
                 String fullName = rs.getString("full_name");
@@ -84,7 +65,8 @@ public class UserStatement implements DAORepository<User> {
                 user.setImage(user_image);
             }
 
-        }catch (SQLException e){
+
+        }catch (SQLException e) {
             e.printStackTrace();
         }
         return user;
