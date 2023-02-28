@@ -16,23 +16,23 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <TextField fx:id="lg_userName" layoutX="111.0" layoutY="151.0" prefHeight="34.0" prefWidth="364.0" promptText="Enter your username" />
+      <TextField fx:id="lg_email" layoutX="111.0" layoutY="151.0" prefHeight="34.0" prefWidth="364.0" promptText="Enter your email" />
       <Button fx:id="lg_submit" layoutX="232.0" layoutY="346.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="104.0" style="-fx-background-color: #4b9ffa;" text="Submit" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Label fx:id="err_userName" layoutX="96.0" layoutY="209.0" textFill="#f44f4f">
+      <Label fx:id="err_email" layoutX="96.0" layoutY="209.0" textFill="#f44f4f">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
-      <Label fx:id="err_password" layoutX="96.0" layoutY="284.0" textFill="#fa5151">
+      <Label fx:id="err_password" layoutX="96.0" layoutY="284.0" prefHeight="15.0" prefWidth="0.0" textFill="#fa5151">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
       <Label fx:id="err_login" alignment="CENTER" layoutX="160.0" layoutY="290.0" prefHeight="18.0" prefWidth="246.0" />
-      <Button fx:id="change_passowrd" layoutX="361.0" layoutY="346.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="115.0" text="Forgot password">
+      <Button fx:id="change_password" layoutX="361.0" layoutY="346.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="115.0" text="Forgot password">
          <font>
             <Font size="13.0" />
          </font></Button>
@@ -43,7 +43,7 @@
       <PasswordField fx:id="lg_password" layoutX="111.0" layoutY="234.0" prefHeight="34.0" prefWidth="364.0" promptText="Enter your password" />
       <ImageView fitHeight="34.0" fitWidth="37.0" layoutX="67.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Image/user2.png" />
+            <Image url="@../Image/email.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="34.0" fitWidth="47.0" layoutX="67.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
