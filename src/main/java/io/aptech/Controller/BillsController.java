@@ -1,6 +1,7 @@
 package io.aptech.Controller;
 
 import io.aptech.Entity.Bills;
+import io.aptech.Entity.User;
 import io.aptech.Model.BillsStatement;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -37,9 +38,14 @@ public class BillsController implements Initializable {
     @FXML private TableColumn<Bills,Date> c_end;
     @FXML private TableColumn<Bills,Integer> c_id;
     private ObservableList<Bills> bills;
+    @FXML private Label user_id;
     private static BillsStatement billsStatement = new BillsStatement();
+    public void getUserId(int id){
+        user_id.setText(String.valueOf(id));
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        user_id.setVisible(false);
         billsStatement.create();
         bills = billsStatement.getAll();
         tbl_bills.getColumns().get(4).setVisible(false);
@@ -113,6 +119,7 @@ public class BillsController implements Initializable {
                 Pane viewEdit = loader.load();
                 Scene scene = new Scene(viewEdit);
                 EditBillController editBillController = loader.getController();
+                editBillController.getUserId(Integer.parseInt(user_id.getText()));
                 editBillController.getBills(editBills);
                 stage.setTitle("Edit Bill");
                 stage.setScene(scene);
@@ -128,14 +135,16 @@ public class BillsController implements Initializable {
     }
     public void loadAddBillWindow(){
         try {
-            Stage dddEventStage = new Stage();
+            Stage addBillStage = new Stage();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/Bill/addBill.fxml"));
             Parent root = loader.load();
             Scene loginScene = new Scene(root,600, 400);
-            dddEventStage.setTitle("Add Event");
-            dddEventStage.setScene(loginScene);
-            dddEventStage.show();
+            AddBillController addBillController = loader.getController();
+            addBillController.getUserId(Integer.parseInt(user_id.getText()));
+            addBillStage.setTitle("Add Bill");
+            addBillStage.setScene(loginScene);
+            addBillStage.show();
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -147,6 +156,10 @@ public class BillsController implements Initializable {
             loader.setLocation(getClass().getResource("/Planning/planning.fxml"));
             Parent root = loader.load();
             Scene loginScene = new Scene(root,730, 670);
+            PlanningController controller =loader.getController();
+            User user = new User();
+            user.setId(Integer.parseInt(user_id.getText()));
+            controller.getUser(user);
             planningStage.setTitle("Planning");
             planningStage.setScene(loginScene);
             planningStage.show();

@@ -6,13 +6,13 @@ public class Budget {
     private int id;
     private User user;
     private String type;
-    private double balance;
+    private int balance;
     private Date date;
 
     public Budget() {
     }
 
-    public Budget(User user, String type, double balance, Date date) {
+    public Budget(User user, String type, int balance, Date date) {
         this.user = user;
         this.type = type;
         this.balance = balance;
@@ -47,7 +47,7 @@ public class Budget {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(int balance) {
         this.balance = balance;
     }
 

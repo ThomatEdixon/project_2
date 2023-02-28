@@ -107,6 +107,10 @@ public class HomePageController implements Initializable {
             loader.setLocation(getClass().getResource("/MainWindow/homePage.fxml"));
             Parent root = loader.load();
             Scene loginScene = new Scene(root,719, 429);
+            HomePageController controller = loader.getController();
+            User user = new User();
+            user.setId(Integer.parseInt(user_id.getText()));
+            controller.getUser(user);
             loginStage.setTitle("transactions");
             loginStage.setScene(loginScene);
             loginStage.show();

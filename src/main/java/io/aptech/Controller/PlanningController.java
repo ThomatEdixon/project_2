@@ -120,6 +120,8 @@ public class PlanningController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/Events/events.fxml"));
             Parent root = loader.load();
+            EventsController controller = loader.getController();
+            controller.getUserId(Integer.parseInt(user_id.getText()));
             Scene eventScene = new Scene(root,700,690);
             eventStage.setTitle("Events");
             eventStage.setScene(eventScene);
@@ -135,6 +137,8 @@ public class PlanningController implements Initializable {
             loader.setLocation(getClass().getResource("/Events/nullEvents.fxml"));
             Parent root = loader.load();
             Scene eventScene = new Scene(root,700,690);
+            NullEventController controller = loader.getController();
+            controller.getUserId(Integer.parseInt(user_id.getText()));
             nullEventStage.setTitle("Events");
             nullEventStage.setScene(eventScene);
             nullEventStage.show();
@@ -148,6 +152,8 @@ public class PlanningController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/Bill/bills.fxml"));
             Parent root = loader.load();
+            BillsController controller = loader.getController();
+            controller.getUserId(Integer.parseInt(user_id.getText()));
             Scene eventScene = new Scene(root,700,690);
             eventStage.setTitle("Bills");
             eventStage.setScene(eventScene);
@@ -163,6 +169,8 @@ public class PlanningController implements Initializable {
             loader.setLocation(getClass().getResource("/Bill/nullBills.fxml"));
             Parent root = loader.load();
             Scene eventScene = new Scene(root,700,690);
+            NullBillController controller = loader.getController();
+            controller.getUserId(Integer.parseInt(user_id.getText()));
             nullEventStage.setTitle("Bills");
             nullEventStage.setScene(eventScene);
             nullEventStage.show();
@@ -191,6 +199,10 @@ public class PlanningController implements Initializable {
             loader.setLocation(getClass().getResource("/MainWindow/homePage.fxml"));
             Parent root = loader.load();
             Scene loginScene = new Scene(root,719, 429);
+            HomePageController controller = loader.getController();
+            User user = new User();
+            user.setId(Integer.parseInt(user_id.getText()));
+            controller.getUser(user);
             loginStage.setTitle("transactions");
             loginStage.setScene(loginScene);
             loginStage.show();
@@ -205,6 +217,7 @@ public class PlanningController implements Initializable {
             loader.setLocation(getClass().getResource("/Planning/planning.fxml"));
             Parent root = loader.load();
             Scene loginScene = new Scene(root,719, 429);
+
             loginStage.setTitle("transactions");
             loginStage.setScene(loginScene);
             loginStage.show();
@@ -219,6 +232,8 @@ public class PlanningController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/Transactions/transaction.fxml"));
             Parent root = loader.load();
+            AddTransactionsController transactionsController = loader.getController();
+            transactionsController.getUserId(Integer.parseInt(user_id.getText()));
             Scene loginScene = new Scene(root,719, 429);
             loginStage.setTitle("Add New");
             loginStage.setScene(loginScene);
@@ -234,7 +249,11 @@ public class PlanningController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/Planning/planning.fxml"));
             Parent root = loader.load();
-            Scene loginScene = new Scene(root,719, 429);
+            PlanningController planningController = loader.getController();
+            User user = new User();
+            user.setId(Integer.parseInt(user_id.getText()));
+            planningController.getUser(user);
+            Scene loginScene = new Scene(root,730, 650);
             loginStage.setTitle("Planning");
             loginStage.setScene(loginScene);
             loginStage.show();

@@ -58,7 +58,7 @@ public class AddBudgetController implements Initializable {
                 user.setId(Integer.parseInt(user_id.getText()));
                 budget.setUser(user);
                 budget.setType(type);
-                budget.setBalance(Double.parseDouble(balance));
+                budget.setBalance(Integer.parseInt(balance));
                 Calendar cal = Calendar.getInstance();
                 int day = cal.get(Calendar.DATE);
                 int month = cal.get(Calendar.MONTH);

@@ -30,7 +30,31 @@ public class AddBudgetStatement implements DAORepository<Budget> {
     public void update(Budget budget) {
 
     }
-
+    public void updateBalance(int balance){
+        try{
+            String sql1 = "UPDATE tbl_budget SET balance = ?";
+            PreparedStatement pst2 = connection.prepareStatement(sql1);
+            pst2.setInt(1,balance);
+            pst2.executeUpdate();
+        }catch (SQLException e1){
+            e1.printStackTrace();
+        }
+    }
+    public int getBalance(int id){
+        int balance = 0;
+        try{
+            String sql = "SELECT balance FROM tbl_budget WHERE user_id = ?";
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setInt(1,id);
+            ResultSet rs = pst.executeQuery();
+            if(rs.next()){
+                balance = rs.getInt("balance");
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return balance;
+    }
     @Override
     public Budget getById(int id) {
         Budget budget = new Budget();
@@ -43,7 +67,7 @@ public class AddBudgetStatement implements DAORepository<Budget> {
                 int b_id = rs.getInt("id");
                 int user_id = rs.getInt("user_id");
                 String type = rs.getString("type_currency");
-                Double balance = rs.getDouble("balance");
+                int balance = rs.getInt("balance");
                 Date date = rs.getDate("save_date");
                 User user = new User();
                 user.setId(user_id);

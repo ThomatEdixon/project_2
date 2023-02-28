@@ -3,7 +3,9 @@ package io.aptech.Controller;
 import io.aptech.Entity.Bills;
 import io.aptech.Entity.Events;
 import io.aptech.Model.AddBillStatement;
+import io.aptech.Model.AddBudgetStatement;
 import io.aptech.Model.AddEventStatement;
+import io.aptech.Model.BillsStatement;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,9 +37,17 @@ public class AddBillController implements Initializable {
     @FXML private Label err_add_spent;
     @FXML private Label err_add_startdate;
     @FXML private Label err_add_enddate;
+    @FXML private Label user_id;
     private static AddBillStatement addBillStatement = new AddBillStatement();
+    private static AddBudgetStatement addBudgetStatement = new AddBudgetStatement();
+    private static int balance = 0;
+    public void getUserId(int id){
+        user_id.setText(String.valueOf(id));
+        balance = addBudgetStatement.getBalance(id);
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        user_id.setVisible(false);
         exits_addbills.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -75,7 +85,12 @@ public class AddBillController implements Initializable {
                 checkEventSpent = "NO";
                 err_add_spent.setText("Event spent is required");
                 err_add_spent.setStyle("-fx-text-fill: #ff1744");
-            }else {
+            } else if (balance < Integer.parseInt(eventSpent)) {
+                checkEventSpent = "NO";
+                err_add_spent.setText("Balance not enough");
+                err_add_spent.setStyle("-fx-text-fill: #ff1744");
+            } else {
+                balance -= Integer.parseInt(eventSpent);
                 checkEventSpent = "YES";
                 err_add_spent.setText("");
             }
@@ -102,6 +117,8 @@ public class AddBillController implements Initializable {
                 bills.setStartDate(eventStartDate);
                 bills.setEndDate(eventEndDate);
                 addBillStatement.insert(bills);
+                // update balance
+                addBudgetStatement.updateBalance(balance);
                 //close window
                 Node node = (Node) e.getSource();
                 Stage thisStage = (Stage) node.getScene().getWindow();
@@ -118,6 +135,8 @@ public class AddBillController implements Initializable {
             loader.setLocation(getClass().getResource("/Bill/bills.fxml"));
             Parent root = loader.load();
             Scene eventScene = new Scene(root,730, 690);
+            BillsController controller = loader.getController();
+            controller.getUserId(Integer.parseInt(user_id.getText()));
             eventStage.setTitle("Events");
             eventStage.setScene(eventScene);
             eventStage.show();
