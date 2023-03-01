@@ -4,6 +4,7 @@ import io.aptech.Entity.User;
 import io.aptech.Model.BillsStatement;
 import io.aptech.Model.EventsStatement;
 import io.aptech.Model.MoneyPlanStatement;
+import io.aptech.Model.UserStatement;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -29,6 +30,7 @@ public class PlanningController implements Initializable {
     @FXML private FontIcon planning;
     @FXML private FontIcon accountUser;
     @FXML private FontIcon home;
+    @FXML private FontIcon icon_back_page;
     @FXML private Label user_id;
     private static EventsStatement eventsStatement = new EventsStatement();
     private static BillsStatement billsStatement = new BillsStatement();
@@ -39,6 +41,14 @@ public class PlanningController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         user_id.setVisible(false);
+        icon_back_page.setOnMouseClicked(e->{
+            // close window
+            Node node = (Node) e.getSource();
+            Stage thisStage = (Stage) node.getScene().getWindow();
+            thisStage.close();
+            //load window
+            loadHomeWindow();
+        });
         planning_event.setOnMouseClicked(e->{
             eventsStatement.create();
             // close window
@@ -200,8 +210,10 @@ public class PlanningController implements Initializable {
             Parent root = loader.load();
             Scene loginScene = new Scene(root,719, 429);
             HomePageController controller = loader.getController();
-            User user = new User();
-            user.setId(Integer.parseInt(user_id.getText()));
+            UserStatement userStatement = new UserStatement();
+            User user = userStatement.getUserById(Integer.parseInt(user_id.getText()));
+            user.setId(user.getId());
+            user.setFullName(user.getFullName());
             controller.getUser(user);
             loginStage.setTitle("transactions");
             loginStage.setScene(loginScene);
@@ -217,7 +229,6 @@ public class PlanningController implements Initializable {
             loader.setLocation(getClass().getResource("/Planning/planning.fxml"));
             Parent root = loader.load();
             Scene loginScene = new Scene(root,719, 429);
-
             loginStage.setTitle("transactions");
             loginStage.setScene(loginScene);
             loginStage.show();
@@ -261,14 +272,19 @@ public class PlanningController implements Initializable {
             e.printStackTrace();
         }
     }
-
     public void loadAccountUserWindow(){
         try {
             Stage loginStage = new Stage();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/Planning/planning.fxml"));
+            loader.setLocation(getClass().getResource("/MainWindow/UserManagement.fxml"));
             Parent root = loader.load();
-            Scene loginScene = new Scene(root,719, 429);
+            UserManagementController userManagementController = loader.getController();
+            UserStatement userStatement = new UserStatement();
+            User user = userStatement.getUserById(Integer.parseInt(user_id.getText()));
+            user.setId(user.getId());
+            user.setFullName(user.getFullName());
+            userManagementController.getUserById(user);
+            Scene loginScene = new Scene(root,695, 770);
             loginStage.setTitle("Account User");
             loginStage.setScene(loginScene);
             loginStage.show();

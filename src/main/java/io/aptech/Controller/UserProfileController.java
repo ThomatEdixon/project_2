@@ -3,6 +3,7 @@ package io.aptech.Controller;
 import io.aptech.Entity.User;
 import io.aptech.Enum.UserGender;
 import io.aptech.Model.UserProfileStatement;
+import io.aptech.Model.UserStatement;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -36,7 +37,7 @@ public class UserProfileController implements Initializable {
     @FXML private Button acc_edit;
     @FXML private Circle avatarCircle;
     @FXML private FontIcon btnCamera;
-
+    @FXML private FontIcon icon_back_page;
     @FXML private Label user_id;
     private static UserProfileStatement userProfileStatement = new UserProfileStatement();
 
@@ -63,6 +64,14 @@ public class UserProfileController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         user_id.setVisible(false);
+        icon_back_page.setOnMouseClicked(e->{
+            // close window
+            Node node = (Node) e.getSource();
+            Stage thisStage = (Stage) node.getScene().getWindow();
+            thisStage.close();
+            //load window
+            loadAccountUserWindow();
+        });
         AtomicReference<String> imagePath = new AtomicReference<>(String.valueOf(getClass().getResource("/Image/account.png")));
         Image image = new Image(imagePath.get(), false);
         avatarCircle.setFill(new ImagePattern(image));
@@ -151,6 +160,26 @@ public class UserProfileController implements Initializable {
             Parent root = loader.load();
             Scene loginScene = new Scene(root,719, 429);
             loginStage.setTitle("Home Page");
+            loginStage.setScene(loginScene);
+            loginStage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+    public void loadAccountUserWindow(){
+        try {
+            Stage loginStage = new Stage();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/MainWindow/UserManagement.fxml"));
+            Parent root = loader.load();
+            UserManagementController userManagementController = loader.getController();
+            UserStatement userStatement = new UserStatement();
+            User user = userStatement.getUserById(Integer.parseInt(user_id.getText()));
+            user.setId(user.getId());
+            user.setFullName(user.getFullName());
+            userManagementController.getUserById(user);
+            Scene loginScene = new Scene(root,695, 770);
+            loginStage.setTitle("Account User");
             loginStage.setScene(loginScene);
             loginStage.show();
         }catch (IOException e){

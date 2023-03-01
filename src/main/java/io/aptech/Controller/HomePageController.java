@@ -1,8 +1,7 @@
 package io.aptech.Controller;
 
 import io.aptech.Entity.User;
-import io.aptech.Model.UserStatement;
-import io.aptech.Entity.User;
+import io.aptech.Model.AddBudgetStatement;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,16 +9,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import org.kordamp.ikonli.Ikon;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class HomePageController implements Initializable {
@@ -30,27 +24,32 @@ public class HomePageController implements Initializable {
     @FXML private FontIcon home;
     @FXML private FontIcon btnEye;
     @FXML private Label moneyBalance;
-    @FXML private Label user_name;
     @FXML private Label user_id;
-    @FXML private Label balance;
+    @FXML private Label addBalance;
+    @FXML private Label user_name;
     private static int count = 0;
-
+    private static int balance = 0;
+    private static AddBudgetStatement addBudgetStatement = new AddBudgetStatement();
     public HomePageController() {
     }
     public void getUser(User user){
         user_id.setText(String.valueOf(user.getId()));
+        user_name.setText(user.getFullName());
+        balance = addBudgetStatement.getBalance(user.getId());
+        String type = addBudgetStatement.getType(user.getId());
+        moneyBalance.setText(balance+" "+type);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         user_id.setVisible(false);
-
         btnEye.setOnMouseClicked(event -> {
             count+=1;
             if(count%2!=0){
                 moneyBalance.setText("******** VND");
                 btnEye.setIconLiteral("fas-eye-slash");
             } else {
-                moneyBalance.setText("500.000 VND");
+                String type = addBudgetStatement.getType(Integer.parseInt(user_id.getText()));
+                moneyBalance.setText(balance+" "+type);
                 btnEye.setIconLiteral("fas-eye");
             }
         });
@@ -86,16 +85,13 @@ public class HomePageController implements Initializable {
         });
 
         accountUser.setOnMouseClicked(event -> {
-            User user1 = new User();
-
             Node node = (Node) event.getSource();
             Stage thisStage = (Stage) node.getScene().getWindow();
             thisStage.close();
             //Loading Main Widows
             loadAccountUserWindow();
         });
-
-        balance.setOnMouseClicked(event -> {
+        addBalance.setOnMouseClicked(event -> {
             try {
                 Stage loginStage = new Stage();
                 FXMLLoader loader = new FXMLLoader();
@@ -190,10 +186,9 @@ public class HomePageController implements Initializable {
             UserManagementController userManagementController = loader.getController();
             User user = new User();
             user.setId(Integer.parseInt(user_id.getText()));
-            String info[] = user_name.getText().split(" ");
-            user.setFullName(info[1]);
+            user.setFullName(user_name.getText());
             userManagementController.getUserById(user);
-            Scene loginScene = new Scene(root,719, 429);
+            Scene loginScene = new Scene(root,695, 770);
             loginStage.setTitle("Account User");
             loginStage.setScene(loginScene);
             loginStage.show();

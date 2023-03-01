@@ -12,60 +12,60 @@
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <AnchorPane prefHeight="677.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aptech.Controller.UserProfileController">
-   <children>
-      <Pane prefHeight="42.0" prefWidth="545.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Label layoutX="241.0" layoutY="6.0" text="Profile" textFill="#465191">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <FontIcon iconColor="#3e3e3e" iconLiteral="fas-arrow-left" iconSize="14" layoutX="31.0" layoutY="26.0" />
-         </children>
-      </Pane>
-      <Pane layoutY="66.0" prefHeight="610.0" prefWidth="545.0" style="-fx-background-color: #B9E3AA;" AnchorPane.bottomAnchor="0.6000000000000227" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <children>
-            <Label layoutX="107.0" layoutY="171.0" text="Full Name">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font></Label>
-            <TextField fx:id="acc_fullname" layoutX="114.0" layoutY="199.0" prefHeight="42.0" prefWidth="318.0" style="-fx-border-radius: 10; -fx-background-radius: 10;" />
-            <TextField fx:id="acc_email" layoutX="114.0" layoutY="358.0" prefHeight="42.0" prefWidth="318.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
-            <Label layoutX="110.0" layoutY="329.0" text="Email">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font></Label>
-            <Label layoutX="110.0" layoutY="419.0" text="Phone">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font></Label>
-            <TextField fx:id="acc_phone" layoutX="113.0" layoutY="448.0" prefHeight="42.0" prefWidth="318.0" style="-fx-border-radius: 10; -fx-background-radius: 10;" />
-            <RadioButton fx:id="gender_male" layoutX="128.0" layoutY="284.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="88.0" text="Male">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </RadioButton>
-            <RadioButton fx:id="gender_female" layoutX="344.0" layoutY="283.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="88.0" text="Female">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </RadioButton>
-            <Label layoutX="107.0" layoutY="260.0" text="Gender">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font></Label>
-            <Button fx:id="acc_edit" layoutX="235.0" layoutY="535.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="67.0" style="-fx-background-color: #5EA1B8;" text="Edit" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Button>
-            <FontIcon fx:id="btnCamera" iconColor="#25a2cc" iconLiteral="fas-camera" iconSize="22" layoutX="307.0" layoutY="33.0" text="" wrappingWidth="24.39996337890625" />
-            <Circle fx:id="avatarCircle" fill="WHITE" layoutX="273.0" layoutY="71.0" opacity="0.8" radius="57.0" stroke="WHITE" strokeType="INSIDE" style="-fx-view-order: 1;">
-               <effect>
-                  <Blend />
-               </effect></Circle>
-            <Label fx:id="user_id" layoutX="374.0" layoutY="16.0" />
-         </children>
-      </Pane>
-   </children>
+    <children>
+        <Pane prefHeight="42.0" prefWidth="545.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label layoutX="241.0" layoutY="6.0" text="Profile" textFill="#465191">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+                <FontIcon fx:id="icon_back_page" iconColor="#3e3e3e" iconLiteral="fas-arrow-left" iconSize="14" layoutX="31.0" layoutY="26.0" />
+            </children>
+        </Pane>
+        <Pane layoutY="66.0" prefHeight="610.0" prefWidth="545.0" style="-fx-background-color: #B9E3AA;" AnchorPane.bottomAnchor="0.6000000000000227" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <Label layoutX="107.0" layoutY="171.0" text="Full Name">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font></Label>
+                <TextField fx:id="acc_fullname" layoutX="114.0" layoutY="199.0" prefHeight="42.0" prefWidth="318.0" style="-fx-border-radius: 10; -fx-background-radius: 10;" />
+                <TextField fx:id="acc_email" layoutX="114.0" layoutY="358.0" prefHeight="42.0" prefWidth="318.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
+                <Label layoutX="110.0" layoutY="329.0" text="Email">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font></Label>
+                <Label layoutX="110.0" layoutY="419.0" text="Phone">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font></Label>
+                <TextField fx:id="acc_phone" layoutX="113.0" layoutY="448.0" prefHeight="42.0" prefWidth="318.0" style="-fx-border-radius: 10; -fx-background-radius: 10;" />
+                <RadioButton fx:id="gender_male" layoutX="128.0" layoutY="284.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="88.0" text="Male">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </RadioButton>
+                <RadioButton fx:id="gender_female" layoutX="344.0" layoutY="283.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="88.0" text="Female">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </RadioButton>
+                <Label layoutX="107.0" layoutY="260.0" text="Gender">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font></Label>
+                <Button fx:id="acc_edit" layoutX="235.0" layoutY="535.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="67.0" style="-fx-background-color: #5EA1B8;" text="Edit" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="15.0" />
+                    </font>
+                </Button>
+                <FontIcon fx:id="btnCamera" iconColor="#25a2cc" iconLiteral="fas-camera" iconSize="22" layoutX="307.0" layoutY="33.0" text="" wrappingWidth="24.39996337890625" />
+                <Circle fx:id="avatarCircle" fill="WHITE" layoutX="273.0" layoutY="71.0" opacity="0.8" radius="57.0" stroke="WHITE" strokeType="INSIDE" style="-fx-view-order: 1;">
+                    <effect>
+                        <Blend />
+                    </effect></Circle>
+                <Label fx:id="user_id" layoutX="374.0" layoutY="16.0" />
+            </children>
+        </Pane>
+    </children>
 </AnchorPane>

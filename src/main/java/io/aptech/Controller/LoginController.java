@@ -40,6 +40,7 @@ public class LoginController implements Initializable {
     private Button change_password;
     @FXML
     private Button lg_register;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lg_submit.setOnAction(e ->{
@@ -74,6 +75,7 @@ public class LoginController implements Initializable {
                             User user1 = new User();
                             user1.setId(user.getInt("id"));
                             user1.setFullName(user.getString("full_name"));
+                            //close window
                             Node node = (Node) e.getSource();
                             Stage thisStage = (Stage) node.getScene().getWindow();
                             thisStage.close();
@@ -85,21 +87,18 @@ public class LoginController implements Initializable {
                                 Parent root = loader.load();
                                 HomePageController homePageController = loader.getController();
                                 homePageController.getUser(user1);
-                                Scene loginScene = new Scene(root,600, 502);
-                                loginStage.setTitle("Login");
+                                Scene loginScene = new Scene(root,700, 690);
+                                loginStage.setTitle("Home Page");
                                 loginStage.setScene(loginScene);
                                 loginStage.show();
                             }catch (IOException e1){
                                 e1.printStackTrace();
                             }
-                            //User info
                         }else{
                             err_login.setText("UserName or Password is invalid");
                             err_login.setStyle("-fx-text-fill: #E53935");
                         }
                     }
-
-
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -110,7 +109,7 @@ public class LoginController implements Initializable {
             Node node = (Node) e.getSource();
             Stage thisStage = (Stage) node.getScene().getWindow();
             thisStage.close();
-            loadMainWindows("/io/aptech/project/hello-view.fxml");
+            loadMainWindows("/User/forgotPassword.fxml");
         });
         lg_register.setOnAction(e ->{
             Node node = (Node) e.getSource();

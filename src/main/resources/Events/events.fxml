@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aptech.Controller.EventsController">
    <top>
@@ -52,52 +53,6 @@
          </BorderPane.margin>
       </AnchorPane>
    </top>
-   <bottom>
-      <AnchorPane prefHeight="99.0" prefWidth="603.0" style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="61.0" layoutY="67.0" prefHeight="18.0" prefWidth="50.0" text="Home">
-               <font>
-                  <Font name="Calibri" size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="631.0" layoutY="67.0" prefHeight="18.0" prefWidth="57.0" text="Account">
-               <font>
-                  <Font name="Calibri" size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="480.0" layoutY="67.0" prefHeight="18.0" prefWidth="62.0" text="Planning">
-               <font>
-                  <Font name="Calibri" size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="190.0" layoutY="67.0" prefHeight="18.0" prefWidth="83.0" text="Transactions">
-               <font>
-                  <Font name="Calibri" size="16.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="39.0" fitWidth="52.0" layoutX="61.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Image/home.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="39.0" fitWidth="56.0" layoutX="497.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Image/plan.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="39.0" fitWidth="56.0" layoutX="641.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Image/account.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="39.0" fitWidth="49.0" layoutX="212.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Image/book.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-   </bottom>
    <center>
       <AnchorPane fx:id="main_view_event" prefHeight="433.0" prefWidth="697.0" BorderPane.alignment="CENTER">
          <children>
@@ -113,4 +68,35 @@
          </children>
       </AnchorPane>
    </center>
+   <bottom>
+      <AnchorPane prefHeight="118.0" prefWidth="722.0" style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="61.0" layoutY="67.0" prefHeight="18.0" prefWidth="45.0" text="Home">
+               <font>
+                  <Font name="Calibri" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="617.0" layoutY="67.0" prefHeight="18.0" prefWidth="57.0" text="Account">
+               <font>
+                  <Font name="Calibri" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="466.0" layoutY="67.0" prefHeight="18.0" prefWidth="62.0" text="Planning">
+               <font>
+                  <Font name="Calibri" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="190.0" layoutY="67.0" prefHeight="18.0" prefWidth="83.0" text="Transactions">
+               <font>
+                  <Font name="Calibri" size="16.0" />
+               </font>
+            </Label>
+            <FontIcon fx:id="home" iconLiteral="fas-home" iconSize="34" layoutX="61.0" layoutY="55.0" />
+            <FontIcon fx:id="transaction" iconLiteral="fas-book" iconSize="34" layoutX="217.0" layoutY="55.0" />
+            <FontIcon fx:id="planning" iconLiteral="fas-clipboard-list" iconSize="36" layoutX="484.0" layoutY="57.0" text="" />
+            <FontIcon fx:id="accountUser" iconLiteral="fas-user-circle" iconSize="34" layoutX="630.0" layoutY="56.0" text="" />
+            <FontIcon fx:id="addNew" fill="#28992a" iconLiteral="fas-plus-circle" iconSize="60" layoutX="335.0" layoutY="74.0" />
+         </children>
+      </AnchorPane>
+   </bottom>
 </BorderPane>
