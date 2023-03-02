@@ -54,4 +54,12 @@ public class RegisterValidation {
         }
         return flag;
     }
+    public  static String ints(String rs){
+        String flag = "YES";
+        String regex = "^[0-9]{1,10}$";
+        if(!rs.matches(regex)){
+            flag="NO";
+        }
+        return flag;
+    }
 }
