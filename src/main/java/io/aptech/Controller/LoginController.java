@@ -25,38 +25,39 @@ import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
     @FXML
-    private TextField lg_userName;
+    private TextField lg_email;
     @FXML
     private TextField lg_password;
     @FXML
-    private Label err_userName;
+    private Label err_email;
     @FXML
-    private  Label err_password;
+    private Label err_password;
     @FXML
     private Button lg_submit;
     @FXML
     private Label err_login;
-@FXML
-private Button change_passowrd;
+    @FXML
+    private Button change_password;
     @FXML
     private Button lg_register;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lg_submit.setOnAction(e ->{
-            String checkUserName = "YES";
+            String checkEmail = "YES";
             String checkPassword = "YES";
-            String userName = lg_userName.getText();
+            String email = lg_email.getText();
             String password = lg_password.getText();
-            if(userName.length() == 0){
-                lg_userName.setStyle("-fx-border-color:  red");
-                checkUserName = "NO";
-            }else if(RegisterValidation.checkEmail(userName).equals("NO")){
-                err_userName.setText("Email is required");
-                checkUserName = "NO";
-            }else  {
-                lg_userName.setStyle("-fx-border-color: black");
-                err_userName.setText("");
-                checkUserName = "YES";
+            if(email.length() == 0){
+                lg_email.setStyle("-fx-border-color:  red");
+                checkEmail = "NO";
+            }else if(RegisterValidation.checkEmail(email).equals("NO")){
+                err_email.setText("Email is required");
+                checkEmail = "NO";
+            }else {
+                lg_email.setStyle("-fx-border-color: black");
+                err_email.setText("");
+                checkEmail = "YES";
             }
             if(password.length() == 0){
                 checkPassword = "NO";
@@ -65,33 +66,50 @@ private Button change_passowrd;
                 checkPassword = "YES";
                 lg_password.setStyle("-fx-border-color: black");
             }
-            if(checkUserName.equals("YES") && checkPassword.equals("YES")){
+            if(checkEmail.equals("YES") && checkPassword.equals("YES")){
                 UserStatement rs = new UserStatement();
-                ResultSet user = rs.getBYUserName(userName);
+                ResultSet user = rs.getByEmail(email);
                 try {
                     if(user.next()){
                         if(BCrypt.checkpw(password,user.getString("user_password"))) {
+                            User user1 = new User();
+                            user1.setId(user.getInt("id"));
+                            user1.setFullName(user.getString("full_name"));
+                            //close window
                             Node node = (Node) e.getSource();
                             Stage thisStage = (Stage) node.getScene().getWindow();
                             thisStage.close();
                             //Loading Main Widows
-                            loadMainWindows("/io/aptech/project/hello-view.fxml");
-                            //User info
+                            try {
+                                Stage loginStage = new Stage();
+                                FXMLLoader loader = new FXMLLoader();
+                                loader.setLocation(getClass().getResource("/MainWindow/homePage.fxml"));
+                                Parent root = loader.load();
+                                HomePageController homePageController = loader.getController();
+                                homePageController.getUser(user1);
+                                Scene loginScene = new Scene(root,700, 690);
+                                loginStage.setTitle("Home Page");
+                                loginStage.setScene(loginScene);
+                                loginStage.show();
+                            }catch (IOException e1){
+                                e1.printStackTrace();
+                            }
                         }else{
                             err_login.setText("UserName or Password is invalid");
                             err_login.setStyle("-fx-text-fill: #E53935");
                         }
                     }
-
-
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
             }
 
         });
-        change_passowrd.setOnAction(e ->{
-            loadMainWindows("/io/aptech/project/hello-view.fxml");
+        change_password.setOnAction(e ->{
+            Node node = (Node) e.getSource();
+            Stage thisStage = (Stage) node.getScene().getWindow();
+            thisStage.close();
+            loadMainWindows("/User/forgotPassword.fxml");
         });
         lg_register.setOnAction(e ->{
             Node node = (Node) e.getSource();

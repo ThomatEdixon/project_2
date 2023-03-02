@@ -43,6 +43,7 @@ public class BudgetStatement implements DAORepository {
     public ObservableList getAll() {
         return null;
     }
+
     public void updateBalance(int _id, int money) {
         try {
             String sql = "UPDATE tbl_budget SET balance = ? WHERE user_id = ?";
@@ -55,3 +56,6 @@ public class BudgetStatement implements DAORepository {
         }
     }
 }
+
+}
+

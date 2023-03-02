@@ -6,7 +6,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+
 import javafx.stage.Stage;
+import org.kordamp.ikonli.javafx.FontIcon;
+
 
 import java.net.URL;
 import java.sql.ResultSet;
@@ -18,6 +21,7 @@ public class PlanController implements Initializable {
     @FXML
     private Button m_fixed;
     @FXML
+
     private Label m_balance;
     @FXML
     private Button b_back;
@@ -43,5 +47,4 @@ public class PlanController implements Initializable {
             window.open("/spendingPlan/moneyFixed.fxml","Money Fixed","MONTH",722,544,"2");
         });
 
-    }
 }

@@ -24,7 +24,7 @@ public class AddEventStatement implements DAORepository<Events> {
             pst.setString(1,events.getName());
             // Check status
             Calendar c = Calendar.getInstance();
-            String[] info = String.valueOf(events.getSpent()).split("-");
+            String[] info = String.valueOf(events.getEndDate()).split("-");
             if(Integer.parseInt(info[0]) < c.get(Calendar.YEAR)){
                 pst.setString(2, String.valueOf(StatusEvent.Finished));
             } else if (Integer.parseInt(info[0]) == c.get(Calendar.YEAR)) {

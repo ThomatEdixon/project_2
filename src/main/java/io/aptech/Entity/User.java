@@ -1,22 +1,26 @@
 package io.aptech.Entity;
 
+import io.aptech.Enum.UserGender;
+
 public class User {
     private int id;
+    private UserGender gender;
     private String fullName;
-    private String username;
     private String password;
     private String email;
     private String phone;
+    private String image;
 
     public User() {
     }
 
-    public User(String fullName, String username, String password, String email, String phone) {
+    public User(UserGender gender, String fullName, String password, String email, String phone, String image) {
+        this.gender = gender;
         this.fullName = fullName;
-        this.username = username;
         this.password = password;
         this.email = email;
         this.phone = phone;
+        this.image = image;
     }
 
     public int getId() {
@@ -27,20 +31,20 @@ public class User {
         this.id = id;
     }
 
+    public UserGender getGender() {
+        return gender;
+    }
+
+    public void setGender(UserGender gender) {
+        this.gender = gender;
+    }
+
     public String getFullName() {
         return fullName;
     }
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getPassword() {
@@ -65,5 +69,13 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

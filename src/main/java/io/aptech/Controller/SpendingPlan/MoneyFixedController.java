@@ -4,6 +4,7 @@ import io.aptech.Controller.LoadMainWindows;
 import io.aptech.Entity.MoneyFixed;
 import io.aptech.Model.BudgetStatement;
 import io.aptech.Model.MoneyPlanStatement;
+
 import io.aptech.Validation.RegisterValidation;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -62,10 +63,7 @@ public class MoneyFixedController implements Initializable {
     private static  String cerruntId;
     @FXML
     private Label m_total;
-//    public static void setId(String _id){
-//        this.id
-//        g_id.setText(_id);
-//    }
+
     public static void setId(String _id) {
         id = Integer.valueOf(_id);
     }

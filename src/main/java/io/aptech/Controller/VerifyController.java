@@ -68,7 +68,7 @@ public class VerifyController implements Initializable {
         try {
             Stage changePasswordStage = new Stage();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/io/aptech/project/hello-view.fxml"));
+            loader.setLocation(getClass().getResource("/forgotPassword/changepass.fxml"));
             Parent root = loader.load();
             Scene changePasswordScene = new Scene(root,320, 240);
             changePasswordStage.setTitle("Change Password");
