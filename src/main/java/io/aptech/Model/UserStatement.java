@@ -44,7 +44,6 @@ public class UserStatement implements DAORepository<User> {
         ResultSet user = null;
         try {
             String sql = "select * from tbl_user where email = ?";
-
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1,userName);
             user = stm.executeQuery();
