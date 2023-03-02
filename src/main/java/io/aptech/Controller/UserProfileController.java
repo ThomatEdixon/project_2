@@ -148,18 +148,24 @@ public class UserProfileController implements Initializable {
             Stage thisStage = (Stage) node.getScene().getWindow();
             thisStage.close();
             //load login window
-            loadHomePageWindow();
+            loadHomeWindow();
         });
     }
 
-    public void loadHomePageWindow(){
+    public void loadHomeWindow(){
         try {
             Stage loginStage = new Stage();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/MainWindow/homePage.fxml"));
             Parent root = loader.load();
             Scene loginScene = new Scene(root,719, 429);
-            loginStage.setTitle("Home Page");
+            HomePageController controller = loader.getController();
+            UserStatement userStatement = new UserStatement();
+            User user = userStatement.getUserById(Integer.parseInt(user_id.getText()));
+            user.setId(user.getId());
+            user.setFullName(user.getFullName());
+            controller.getUser(user);
+            loginStage.setTitle("transactions");
             loginStage.setScene(loginScene);
             loginStage.show();
         }catch (IOException e){

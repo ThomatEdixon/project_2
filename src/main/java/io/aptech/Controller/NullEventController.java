@@ -121,6 +121,8 @@ public class NullEventController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/Events/addEvent.fxml"));
             Parent root = loader.load();
+            AddEventController controller = loader.getController();
+            controller.getUserId(Integer.parseInt(user_id.getText()));
             Scene loginScene = new Scene(root,600, 400);
             dddEventStage.setTitle("Add Event");
             dddEventStage.setScene(loginScene);
