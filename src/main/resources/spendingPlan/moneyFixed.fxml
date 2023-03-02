@@ -13,24 +13,19 @@
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font></Label>
-      <TableView fx:id="m_month" layoutX="32.0" layoutY="119.0" prefHeight="78.0" prefWidth="672.0" />
+      <TableView fx:id="m_month" layoutX="32.0" layoutY="119.0" prefHeight="78.0" prefWidth="672.0" style="-fx-cursor: hand;" />
       <Label alignment="CENTER" layoutX="32.0" layoutY="88.0" prefHeight="30.0" prefWidth="672.0" style="-fx-background-color: #87a6ff;" text="Month">
          <font>
             <Font name=".VnArialH" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="add_months" graphicTextGap="1.0" layoutX="557.0" layoutY="197.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="68.0" style="-fx-background-color: #1cb1fa;" text="ADD +" textFill="WHITE">
+      <Button fx:id="add_months" graphicTextGap="1.0" layoutX="636.0" layoutY="197.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="68.0" style="-fx-background-color: #1cb1fa; -fx-cursor: hand;" text="ADD +" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
       <TextField fx:id="month_txt" layoutX="293.0" layoutY="302.0" />
-      <Button fx:id="add_update" graphicTextGap="1.0" layoutX="636.0" layoutY="196.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="68.0" style="-fx-background-color: #1cb1fa;" text="Save" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="month_delete" graphicTextGap="1.0" layoutX="384.0" layoutY="336.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="58.0" style="-fx-background-color: #1cb1fa;" text="Delete" textFill="WHITE">
+      <Button fx:id="month_delete" graphicTextGap="1.0" layoutX="384.0" layoutY="336.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="58.0" style="-fx-background-color: #1cb1fa; -fx-cursor: hand;" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="11.0" />
          </font>
@@ -50,7 +45,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="month_update" graphicTextGap="1.0" layoutX="293.0" layoutY="336.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="58.0" style="-fx-background-color: #1cb1fa;" text="Save" textFill="WHITE">
+      <Button fx:id="month_update" graphicTextGap="1.0" layoutX="293.0" layoutY="336.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="58.0" style="-fx-background-color: #1cb1fa; -fx-cursor: hand;" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="11.0" />
          </font>

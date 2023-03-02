@@ -14,7 +14,6 @@ public class BudgetStatement implements DAORepository {
     public void insert(Object o) {
 
     }
-
     @Override
     public void update(Object o) {
 
@@ -38,11 +37,25 @@ public class BudgetStatement implements DAORepository {
     }
     @Override
     public void delete(Object o) {
-
     }
 
     @Override
     public ObservableList getAll() {
         return null;
     }
+
+    public void updateBalance(int _id, int money) {
+        try {
+            String sql = "UPDATE tbl_budget SET balance = ? WHERE user_id = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1,money);
+            stm.setInt(2,_id);
+             stm.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }
+
+}
+
