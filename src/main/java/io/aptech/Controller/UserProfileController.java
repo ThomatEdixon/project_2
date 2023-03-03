@@ -42,6 +42,8 @@ public class UserProfileController implements Initializable {
     private static UserProfileStatement userProfileStatement = new UserProfileStatement();
 
     private final ToggleGroup gender = new ToggleGroup();
+    private AtomicReference<String> imagePath = new AtomicReference<>(String.valueOf(getClass().getResource("/Image/account.png")));
+
 
     public void getUserById(User user) {
         user_id.setText(String.valueOf(user.getId()));
@@ -59,6 +61,16 @@ public class UserProfileController implements Initializable {
         }
         acc_email.setText(user1.getEmail());
         acc_phone.setText(user1.getPhone());
+        UserStatement userStatement = new UserStatement();
+        User n_user = userStatement.getUserById(Integer.parseInt(user_id.getText()));
+        String img = n_user.getImage();
+        Image userImg = new Image(img);
+        if(img.length() < 1){
+            Image image = new Image(imagePath.get(), false);
+            avatarCircle.setFill(new ImagePattern(image));
+        }else{
+            avatarCircle.setFill(new ImagePattern(userImg));
+        }
     }
 
     @Override
@@ -72,9 +84,6 @@ public class UserProfileController implements Initializable {
             //load window
             loadAccountUserWindow();
         });
-        AtomicReference<String> imagePath = new AtomicReference<>(String.valueOf(getClass().getResource("/Image/account.png")));
-        Image image = new Image(imagePath.get(), false);
-        avatarCircle.setFill(new ImagePattern(image));
 
         // Button Gender
         gender_male.setToggleGroup(gender);

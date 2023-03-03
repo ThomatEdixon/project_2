@@ -171,9 +171,11 @@ public class NullEventController implements Initializable {
         try {
             Stage loginStage = new Stage();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/Planning/planning.fxml"));
+            loader.setLocation(getClass().getResource("/Transactions/listTransactions.fxml"));
             Parent root = loader.load();
-            Scene loginScene = new Scene(root,719, 429);
+            ListTransactionsController controller = loader.getController();
+            controller.getUserId(Integer.parseInt(user_id.getText()));
+            Scene loginScene = new Scene(root,850, 640);
             loginStage.setTitle("transactions");
             loginStage.setScene(loginScene);
             loginStage.show();
