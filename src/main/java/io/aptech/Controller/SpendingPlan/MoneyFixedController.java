@@ -33,10 +33,6 @@ public class MoneyFixedController implements Initializable {
     public  String getType() {
         return type;
     }
-
-
-
-
     @FXML
     private Button add_months;
 
