@@ -9,38 +9,39 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aptech.Controller.Changepasss">
+<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aptech.Controller.Changepasss">
    <children>
-      <TextField fx:id="emailid" layoutX="208.0" layoutY="99.0" prefHeight="26.0" prefWidth="222.0" promptText="Enter your email" />
-      <TextField fx:id="phoneid" layoutX="208.0" layoutY="159.0" prefHeight="26.0" prefWidth="222.0" promptText="Enter your phone" />
+      <TextField fx:id="emailid" layoutX="139.0" layoutY="99.0" prefHeight="26.0" prefWidth="222.0" promptText="Enter your email" />
+      <TextField fx:id="phoneid" layoutX="139.0" layoutY="159.0" prefHeight="26.0" prefWidth="222.0" promptText="Enter your phone" />
       <Label fx:id="err_emailid" layoutX="208.0" layoutY="125.0" prefHeight="18.0" prefWidth="128.0" />
       <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="138.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="138.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="131.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="err_phoneid" layoutX="208.0" layoutY="191.0" prefHeight="18.0" prefWidth="182.0" />
-      <Button fx:id="btchange" layoutX="208.0" layoutY="270.0" mnemonicParsing="false"  text="Enter" />
-      <PasswordField fx:id="passchange" layoutX="208.0" layoutY="216.0" prefHeight="26.0" prefWidth="222.0" promptText="New Password" />
-      <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="138.0" layoutY="95.0">
+      <Button fx:id="btchange" layoutX="208.0" layoutY="270.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="63.0" style="-fx-background-color: blue;" text="Submit" textFill="WHITE" />
+      <PasswordField fx:id="passchange" layoutX="139.0" layoutY="216.0" prefHeight="26.0" prefWidth="222.0" promptText="New Password" />
+      <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="78.0" layoutY="95.0">
          <image>
             <Image url="@../Image/email.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="138.0" layoutY="212.0">
+      <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="78.0" layoutY="212.0">
          <image>
             <Image url="@../Image/password.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="138.0" layoutY="155.0">
+      <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="78.0" layoutY="155.0">
          <image>
             <Image url="@../Image/phone.png" />
          </image>
       </ImageView>
-      <Text fill="#1b9e2c" layoutX="219.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHANGE PASSWORD" wrappingWidth="161.60003662109375">
+      <Text fill="#1b9e2c" layoutX="149.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHANGE PASSWORD" wrappingWidth="161.60003662109375">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
+      <FontIcon fx:id="icon_back_page" iconLiteral="fas-arrow-left" iconSize="18" layoutX="79.0" layoutY="49.0" />
    </children>
 </AnchorPane>

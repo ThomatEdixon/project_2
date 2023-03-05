@@ -28,6 +28,7 @@ import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class RegisterController implements Initializable{
+    @FXML private FontIcon icon_back_page;
     @FXML private TextField res_fullname;
     @FXML private RadioButton res_male;
     @FXML private RadioButton res_female;
@@ -64,6 +65,16 @@ public class RegisterController implements Initializable{
                     res_female.setSelected(true);
                 }
             }
+        });
+
+        // button return login
+        icon_back_page.setOnMouseClicked(event -> {
+            //close window
+            Node node = (Node) event.getSource();
+            Stage thisStage = (Stage) node.getScene().getWindow();
+            thisStage.close();
+            //load login window
+            loadLoginWindow();
         });
 
         // Register Avatar User
@@ -221,7 +232,8 @@ public class RegisterController implements Initializable{
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/User/login.fxml"));
             Parent root = loader.load();
-            Scene loginScene = new Scene(root,719, 429);
+            Scene loginScene = new Scene(root,700, 510);
+            loginScene.getStylesheets().add(getClass().getResource("/Style/style.css").toExternalForm());
             loginStage.setTitle("Login");
             loginStage.setScene(loginScene);
             loginStage.show();
