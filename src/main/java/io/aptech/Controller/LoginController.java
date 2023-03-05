@@ -11,8 +11,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -37,9 +40,9 @@ public class LoginController implements Initializable {
     @FXML
     private Label err_login;
     @FXML
-    private Button change_password;
+    private Hyperlink change_password;
     @FXML
-    private Button lg_register;
+    private Hyperlink lg_register;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -125,7 +128,8 @@ public class LoginController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource(path));
             Parent root = loader.load();
-            Scene loginScene = new Scene(root,600, 502);
+            Scene loginScene = new Scene(root,600, 708);
+//            loginScene.getStylesheets().add(getClass().getResource("/Style/style.css").toExternalForm());
             loginStage.setTitle("Login");
             loginStage.setScene(loginScene);
             loginStage.show();

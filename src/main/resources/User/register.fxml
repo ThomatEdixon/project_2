@@ -5,69 +5,73 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="654.0" prefWidth="600.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aptech.Controller.RegisterController">
+<AnchorPane prefHeight="708.0" prefWidth="600.0" styleClass="register" stylesheets="@../Style/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aptech.Controller.RegisterController">
    <children>
-      <Label alignment="CENTER" layoutY="-2.0" prefHeight="66.0" prefWidth="600.0" style="-fx-background-color: #29b6f6; -fx-alignment: centre;" text="Register" textFill="#081824" AnchorPane.bottomAnchor="590.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
+      <Label alignment="CENTER" layoutY="-2.0" prefHeight="70.0" prefWidth="600.0" style="-fx-alignment: centre;" text="Register" AnchorPane.bottomAnchor="640.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
          <font>
-            <Font name="Calibri" size="22.0" />
+            <Font name="Calibri Bold" size="28.0" />
          </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9300000071525574" green="0.027899999171495438" blue="0.4365925192832947" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.14010152220726013" blue="0.9599999785423279" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
       </Label>
-      <TextField fx:id="res_fullname" layoutX="161.0" layoutY="235.0" prefHeight="34.0" prefWidth="296.0" promptText="Enter your full name" />
-      <TextField fx:id="res_email" layoutX="161.0" layoutY="365.0" prefHeight="34.0" prefWidth="296.0" promptText="Enter your email" />
-      <TextField fx:id="res_phone" layoutX="161.0" layoutY="428.0" prefHeight="33.0" prefWidth="296.0" promptText="Enter your phone" />
-      <Button fx:id="btn_register" layoutX="257.0" layoutY="556.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="85.0" style="-fx-background-color: #29b6f6;" text="Register" textFill="WHITE">
+      <TextField fx:id="res_fullname" alignment="CENTER" layoutX="133.0" layoutY="249.0" prefHeight="44.0" prefWidth="352.0" promptText="Enter your full name" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
+      <TextField fx:id="res_email" alignment="CENTER" layoutX="133.0" layoutY="396.0" prefHeight="44.0" prefWidth="352.0" promptText="Enter your email" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
+      <TextField fx:id="res_phone" alignment="CENTER" layoutX="133.0" layoutY="470.0" prefHeight="44.0" prefWidth="352.0" promptText="Enter your phone" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
+      <Button fx:id="btn_register" layoutX="245.0" layoutY="626.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="110.0" style="-fx-background-color: #29b6f6;" text="Register" textFill="WHITE">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="18.0" />
          </font></Button>
-      <Label fx:id="err_fullname" layoutX="161.0" layoutY="270.0" prefHeight="18.0" prefWidth="296.0" />
-      <Label fx:id="err_password" layoutX="161.0" layoutY="336.0" prefHeight="18.0" prefWidth="296.0" />
+      <Label fx:id="err_fullname" layoutX="134.0" layoutY="293.0" prefHeight="18.0" prefWidth="352.0" />
+      <Label fx:id="err_password" layoutX="133.0" layoutY="366.0" prefHeight="18.0" prefWidth="352.0" />
       <Label fx:id="err_email" layoutX="161.0" layoutY="400.0" prefHeight="18.0" prefWidth="296.0" />
-      <Label fx:id="err_phone" layoutX="161.0" layoutY="462.0" prefHeight="18.0" prefWidth="296.0" />
-      <ImageView fitHeight="34.0" fitWidth="60.0" layoutX="100.0" layoutY="301.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Image/password.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="34.0" fitWidth="45.0" layoutX="100.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Image/user2.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="34.0" fitWidth="43.0" layoutX="100.0" layoutY="428.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Image/phone.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="34.0" fitWidth="52.0" layoutX="100.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Image/email.png" />
-         </image>
-      </ImageView>
-      <PasswordField fx:id="res_password" layoutX="161.0" layoutY="301.0" prefHeight="34.0" prefWidth="296.0" promptText="Enter your password" />
-      <RadioButton fx:id="res_male" layoutX="161.0" layoutY="509.0" mnemonicParsing="false" text="MALE">
+      <Label fx:id="err_phone" layoutX="134.0" layoutY="516.0" prefHeight="18.0" prefWidth="352.0" />
+      <PasswordField fx:id="res_password" alignment="CENTER" layoutX="133.0" layoutY="322.0" prefHeight="44.0" prefWidth="352.0" promptText="Enter your password" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
+      <RadioButton fx:id="res_male" layoutX="160.0" layoutY="574.0" mnemonicParsing="false" text="MALE" textFill="#484848">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="res_female" layoutX="343.0" layoutY="509.0" mnemonicParsing="false" text="FEMALE">
+      <RadioButton fx:id="res_female" layoutX="355.0" layoutY="574.0" mnemonicParsing="false" text="FEMALE" textFill="#484848">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </RadioButton>
       <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="100.0" layoutY="492.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Image/gender.png" />
+
          </image>
       </ImageView>
-      <Label fx:id="err_gender" layoutX="161.0" layoutY="400.0" prefHeight="18.0" prefWidth="296.0" />
+      <Label fx:id="err_gender" layoutX="148.0" layoutY="593.0" prefHeight="18.0" prefWidth="324.0" />
       <FontIcon fx:id="btnCamera" iconColor="#25a2cc" iconLiteral="fas-camera" iconSize="22" layoutX="331.0" layoutY="99.0" text="" wrappingWidth="24.39996337890625" />
       <Circle fx:id="avatarCircle" fill="WHITE" layoutX="300.0" layoutY="142.0" radius="62.0" stroke="#4b4a4a" strokeType="INSIDE" strokeWidth="0.4" style="-fx-view-order: 1;" />
+      <FontIcon fx:id="icon_back_page" iconColor="#3e3e3e" iconLiteral="fas-arrow-left" iconSize="18" layoutX="44.0" layoutY="38.0" />
+      <FontIcon iconColor="#767676" iconLiteral="fas-user-circle" iconSize="30" layoutX="146.0" layoutY="282.0" text="" />
+      <FontIcon iconColor="#767676" iconLiteral="fas-lock" iconSize="28" layoutX="147.0" layoutY="355.0" />
+      <FontIcon iconColor="#767676" iconLiteral="fas-envelope" iconSize="28" layoutX="146.0" layoutY="428.0" />
+      <FontIcon iconColor="#767676" iconLiteral="fas-phone-square-alt" iconSize="30" layoutX="146.0" layoutY="503.0" />
+      <FontIcon iconColor="#767676" iconLiteral="fas-transgender" iconSize="30" layoutX="147.0" layoutY="561.0" wrappingWidth="26.25" />
    </children>
 </AnchorPane>
