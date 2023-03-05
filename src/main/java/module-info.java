@@ -19,6 +19,7 @@ module io.aptech.project {
 
 //    Send Mail
     requires javax.mail;
+
     exports io.aptech.Entity;
     opens io.aptech.Entity to javafx.fxml;
     opens io.aptech.project to javafx.fxml;
