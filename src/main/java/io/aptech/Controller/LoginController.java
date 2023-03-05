@@ -1,6 +1,7 @@
 package io.aptech.Controller;
 
 import io.aptech.Entity.User;
+import io.aptech.Model.AddBudgetStatement;
 import io.aptech.Model.UserStatement;
 import io.aptech.Validation.RegisterValidation;
 import io.aptech.project.FxmlLoader;
@@ -43,7 +44,8 @@ public class LoginController implements Initializable {
     private Hyperlink change_password;
     @FXML
     private Hyperlink lg_register;
-
+    private AddBudgetStatement addBudgetStatement = new AddBudgetStatement();
+    private int budget = 0;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lg_submit.setOnAction(e ->{
@@ -78,6 +80,7 @@ public class LoginController implements Initializable {
                             User user1 = new User();
                             user1.setId(user.getInt("id"));
                             user1.setFullName(user.getString("full_name"));
+                            budget = addBudgetStatement.getBalance(user1.getId());
                             //close window
                             Node node = (Node) e.getSource();
                             Stage thisStage = (Stage) node.getScene().getWindow();
@@ -96,6 +99,22 @@ public class LoginController implements Initializable {
                                 loginStage.show();
                             }catch (IOException e1){
                                 e1.printStackTrace();
+                            }
+                            if(budget == 0){
+                                try {
+                                    Stage loginStage = new Stage();
+                                    FXMLLoader loader = new FXMLLoader();
+                                    loader.setLocation(getClass().getResource("/Budget/budget.fxml"));
+                                    Parent root = loader.load();
+                                    AddBudgetController budgetController = loader.getController();
+                                    budgetController.getUserId(user1.getId());
+                                    Scene loginScene = new Scene(root,505, 350);
+                                    loginStage.setTitle("Budget");
+                                    loginStage.setScene(loginScene);
+                                    loginStage.show();
+                                }catch (IOException e2){
+                                    e2.printStackTrace();
+                                }
                             }
                         }else{
                             err_login.setText("UserName or Password is invalid");
