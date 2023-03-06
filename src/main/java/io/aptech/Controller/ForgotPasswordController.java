@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,6 +26,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class ForgotPasswordController implements Initializable {
+    @FXML private FontIcon icon_back_page;
     @FXML private TextField txtEmail;
     @FXML private TextField txtPhone;
     @FXML private Label err_email;
@@ -98,6 +100,15 @@ public class ForgotPasswordController implements Initializable {
                 }
             }
         });
+
+        icon_back_page.setOnMouseClicked(e -> {
+            //close window
+            Node node = (Node) e.getSource();
+            Stage thisStage = (Stage) node.getScene().getWindow();
+            thisStage.close();
+            //load login window
+            loadLoginWindow();
+        });
     }
 
     public void loadVerifyCodeWindow(){
@@ -115,5 +126,20 @@ public class ForgotPasswordController implements Initializable {
         }
     }
 
+    public void loadLoginWindow(){
+        try {
+            Stage loginStage = new Stage();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/User/login.fxml"));
+            Parent root = loader.load();
+            Scene loginScene = new Scene(root,700, 510);
+            loginScene.getStylesheets().add(getClass().getResource("/Style/style.css").toExternalForm());
+            loginStage.setTitle("Login");
+            loginStage.setScene(loginScene);
+            loginStage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
 }

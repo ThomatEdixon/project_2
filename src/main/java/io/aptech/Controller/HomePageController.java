@@ -25,7 +25,6 @@ public class HomePageController implements Initializable {
     @FXML private FontIcon btnEye;
     @FXML private Label moneyBalance;
     @FXML private Label user_id;
-    @FXML private Label addBalance;
     @FXML private Label user_name;
     private static int count = 0;
     private static int balance = 0;
@@ -91,22 +90,7 @@ public class HomePageController implements Initializable {
             //Loading Main Widows
             loadAccountUserWindow();
         });
-        addBalance.setOnMouseClicked(event -> {
-            try {
-                Stage loginStage = new Stage();
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/Budget/budget.fxml"));
-                Parent root = loader.load();
-                AddBudgetController budgetController = loader.getController();
-                budgetController.getUserId(Integer.parseInt(user_id.getText()));
-                Scene loginScene = new Scene(root,505, 350);
-                loginStage.setTitle("Budget");
-                loginStage.setScene(loginScene);
-                loginStage.show();
-            }catch (IOException e){
-                e.printStackTrace();
-            }
-        });
+
     }
     public void loadHomeWindow(){
         try {
@@ -130,9 +114,11 @@ public class HomePageController implements Initializable {
         try {
             Stage loginStage = new Stage();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/Planning/planning.fxml"));
+            loader.setLocation(getClass().getResource("/Transactions/listTransactions.fxml"));
             Parent root = loader.load();
-            Scene loginScene = new Scene(root,719, 429);
+            ListTransactionsController controller = loader.getController();
+            controller.getUserId(Integer.parseInt(user_id.getText()));
+            Scene loginScene = new Scene(root,850, 640);
             loginStage.setTitle("transactions");
             loginStage.setScene(loginScene);
             loginStage.show();

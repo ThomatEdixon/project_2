@@ -25,7 +25,7 @@
                </font>
             </Label>
             <FontIcon fx:id="btnLogOut" iconColor="#898989" iconLiteral="fas-sign-out-alt" iconSize="35" layoutX="598.0" layoutY="92.0" />
-            <ImageView fitHeight="74.0" fitWidth="69.0" layoutX="35.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="user_img" fitHeight="74.0" fitWidth="69.0" layoutX="35.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Image/account.png" />
                </image>
@@ -36,7 +36,7 @@
       </Pane>
       <Pane layoutY="199.0" prefHeight="364.0" prefWidth="694.0" style="-fx-border-color: #ccc;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Label layoutX="92.0" layoutY="44.0" text="My wallet">
+            <Label fx:id="addBalance" layoutX="92.0" layoutY="44.0" text="My wallet">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

@@ -15,7 +15,8 @@ public class SpendingManagementApplication extends Application {
 
         loader.setLocation(getClass().getResource("/spendingPlan/plan.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root, 570, 461);
+        Scene scene = new Scene(root, 700, 510);
+        scene.getStylesheets().add(getClass().getResource("/Style/style.css").toExternalForm());
         stage.setTitle("Login");
 
         stage.setScene(scene);
