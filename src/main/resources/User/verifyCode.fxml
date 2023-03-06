@@ -5,9 +5,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="248.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="io.aptech.Controller.VerifyController">
+<AnchorPane prefHeight="248.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aptech.Controller.VerifyController">
    <children>
       <Label layoutY="57.0" prefHeight="38.0" prefWidth="475.0" style="-fx-alignment: center;" text="Enter your code to verify">
          <font>
@@ -17,5 +17,6 @@
       <TextField fx:id="txtCode" layoutX="163.0" layoutY="101.0" prefHeight="26.0" prefWidth="146.0" promptText="Enter your verify code" />
       <Button fx:id="btnVerifyCode" layoutX="198.0" layoutY="153.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="77.0" style="-fx-background-color: blue;" text="Verification" textFill="WHITE" />
       <Label fx:id="err_code" layoutX="158.0" layoutY="130.0" prefHeight="18.0" prefWidth="160.0" />
+      <FontIcon fx:id="icon_back_page" iconLiteral="fas-arrow-left" iconSize="19" layoutX="41.0" layoutY="44.0" />
    </children>
 </AnchorPane>
