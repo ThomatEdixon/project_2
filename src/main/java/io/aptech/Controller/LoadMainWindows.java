@@ -27,10 +27,10 @@ public class LoadMainWindows {
                 controller1.setIds(id);
             }
             Parent root = loader.load();
-            Scene loginScene = new Scene(root,W, H);
-
+            Scene scene = new Scene(root,W, H);
+            scene.getStylesheets().add(getClass().getResource("/Style/style.css").toExternalForm());
             loginStage.setTitle(title);
-            loginStage.setScene(loginScene);
+            loginStage.setScene(scene);
             loginStage.show();
 
         }catch (IOException e){

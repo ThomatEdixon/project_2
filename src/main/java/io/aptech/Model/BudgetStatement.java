@@ -10,10 +10,12 @@ import java.sql.SQLException;
 
 public class BudgetStatement implements DAORepository {
     public Connection connection = MySQLConnection.getConnection();
+
     @Override
     public void insert(Object o) {
 
     }
+
     @Override
     public void update(Object o) {
 
@@ -25,16 +27,17 @@ public class BudgetStatement implements DAORepository {
         try {
             String sql = "SELECT * FROM tbl_budget WHERE user_id = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setInt(1,id);
+            stm.setInt(1, id);
             rs = stm.executeQuery();
             System.out.println("123456");
 
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return rs;
     }
+
     @Override
     public void delete(Object o) {
     }
@@ -48,13 +51,14 @@ public class BudgetStatement implements DAORepository {
         try {
             String sql = "UPDATE tbl_budget SET balance = ? WHERE user_id = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setInt(1,money);
-            stm.setInt(2,_id);
-             stm.executeUpdate();
-        }catch (SQLException e){
+            stm.setInt(1, money);
+            stm.setInt(2, _id);
+            stm.executeUpdate();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+}
 
 
 

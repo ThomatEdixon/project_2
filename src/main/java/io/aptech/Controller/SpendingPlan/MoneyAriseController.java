@@ -117,7 +117,7 @@ public class MoneyAriseController implements Initializable {
                     }
                 });
                 m_today.setItems(moneyFixeds);
-                m_total.setText("Total :" + moneyFixeds.get(0).getCerruntMoney() + "$");
+                m_total.setText(" Total : " + moneyFixeds.get(0).getCerruntMoney() + "$");
             }
         }catch (SQLException e){
             throw  new RuntimeException(e);
@@ -159,7 +159,7 @@ public class MoneyAriseController implements Initializable {
                 try {
                     if(rss.next()) {
                         moneyFixeds = FXCollections.observableArrayList(new MoneyFixed(rss.getString("o_foodDrink"), rss.getString("o_clothes"), rss.getString("o_petroleum")));
-                        m_total.setText("Total : " + moneyFixeds.get(0).getCerruntMoney() + "$");
+                        m_total.setText(" Total : " + moneyFixeds.get(0).getCerruntMoney() + "$");
                         m_today.setItems(moneyFixeds);
                     }
                 }catch (SQLException ex){

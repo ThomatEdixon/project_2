@@ -13,7 +13,7 @@ public class SpendingManagementApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader();
 
-        loader.setLocation(getClass().getResource("/spendingPlan/plan.fxml"));
+        loader.setLocation(getClass().getResource("/spendingPlan/planArise.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root, 700, 510);
         scene.getStylesheets().add(getClass().getResource("/Style/style.css").toExternalForm());
