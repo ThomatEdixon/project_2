@@ -33,7 +33,8 @@ public class PlanController implements Initializable {
             Node node = (Node) e.getSource();
             Stage thisStage = (Stage) node.getScene().getWindow();
             thisStage.close();
-            window.open("/Planning/planning.fxml", "Planning", "MONTH", 679, 577, "null");
+            window.open("/Planning/planning.fxml", "Planning", "null", 679, 577, "null");
+
         });
         try {
             ResultSet rs = (ResultSet) budgetStatement.getById(1);
@@ -44,7 +45,8 @@ public class PlanController implements Initializable {
             throw new RuntimeException(e);
         }
         m_fixed.setOnAction(e -> {
-            window.open("/spendingPlan/moneyFixed.fxml", "Money Fixed", "MONTH", 722, 544, "2");
+
+            window.open("/spendingPlan/moneyFixed.fxml", "Money Fixed", "MONTH", 722, 544, "1");
         });
     }
 }

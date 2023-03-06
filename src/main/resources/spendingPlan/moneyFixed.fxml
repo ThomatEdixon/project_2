@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="544.0" prefWidth="722.0" style="-fx-background-color: #333;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aptech.Controller.SpendingPlan.MoneyFixedController">
+<AnchorPane prefHeight="544.0" prefWidth="722.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aptech.Controller.SpendingPlan.MoneyFixedController">
    <children>
-      <Label alignment="CENTER" layoutX="21.0" layoutY="7.0" prefHeight="30.0" prefWidth="679.0" text="Money Fixed" textFill="#f4f4f4">
+      <Label alignment="CENTER" layoutX="21.0" layoutY="7.0" prefHeight="30.0" prefWidth="679.0" text="Money Fixed" textFill="#7e7979">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font></Label>
@@ -35,14 +35,9 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="238.0" layoutY="448.0" text="Money In a month : " textFill="WHITE">
+      <Label fx:id="m_total" layoutX="32.0" layoutY="201.0" prefHeight="22.0" prefWidth="222.0" text=" " textFill="#868383">
          <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="m_total" layoutX="409.0" layoutY="452.0" prefHeight="18.0" prefWidth="68.0" text="100046" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Label>
       <Button fx:id="month_update" graphicTextGap="1.0" layoutX="293.0" layoutY="336.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="58.0" style="-fx-background-color: #1cb1fa; -fx-cursor: hand;" text="Save" textFill="WHITE">
@@ -50,5 +45,6 @@
             <Font name="System Bold" size="11.0" />
          </font>
       </Button>
+      <Label layoutX="7.0" layoutY="522.0" text="the amount will be deducted from your balance at the end of this month!" />
    </children>
 </AnchorPane>
