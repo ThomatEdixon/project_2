@@ -1,8 +1,4 @@
-.root{
--fx-background-image: url('background3.jpg');
--fx-background-size:cover;
--fx-background-position:center;
-}
+
 
 .profile{
 -fx-background-image: url('background1.jpg');
@@ -12,6 +8,17 @@
 
 .register{
 -fx-background-image: url('background2.jpg');
+-fx-background-size:cover;
+-fx-background-position:center;
+}
+.exitsEvent{
+
+-fx-background-image: url('close.png');
+-fx-background-size:cover;
+-fx-background-position:center;
+}
+.backgroundSpending{
+-fx-background-image: url('backSpending.png');
 -fx-background-size:cover;
 -fx-background-position:center;
 }

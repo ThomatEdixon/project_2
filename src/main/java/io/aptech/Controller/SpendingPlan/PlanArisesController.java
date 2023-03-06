@@ -38,7 +38,7 @@ public class PlanArisesController implements Initializable {
         }
         d_arises.setOnAction(e -> {
 
-            window.open("/spendingPlan/moneyArise.fxml","Money Arise","DAY",722,544,"2");
+            window.open("/spendingPlan/moneyArise.fxml","Money Arise","DAY",722,544,"1");
         });
         b_back.setOnAction(e->{
             Node node = (Node) e.getSource();

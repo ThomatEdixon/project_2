@@ -56,7 +56,7 @@ public class ItemController implements Initializable {
     private Button o_petroleum;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+    o_title.setText("Option");
         if(title.equals("DAY")){
             day();
             System.out.println("Item Day");

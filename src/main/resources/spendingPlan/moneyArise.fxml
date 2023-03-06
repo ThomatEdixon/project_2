@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="544.0" prefWidth="722.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aptech.Controller.SpendingPlan.MoneyAriseController">
+<AnchorPane prefHeight="544.0" prefWidth="722.0" style="-fx-background-color: white;" styleClass="backgroundSpending" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aptech.Controller.SpendingPlan.MoneyAriseController">
    <children>
-      <Label alignment="CENTER" layoutX="21.0" layoutY="7.0" prefHeight="30.0" prefWidth="679.0" text="Money Arise" textFill="#6e6d6d">
+      <Label alignment="CENTER" layoutY="-1.0" prefHeight="30.0" prefWidth="723.0" style="-fx-background-color: #3333;" text="Money Arise" textFill="#e1dcdc">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font></Label>
@@ -36,7 +36,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="m_total" layoutX="21.0" layoutY="198.0" prefHeight="27.0" prefWidth="243.0" style="-fx-background-color: white; -fx-border-radius: 50px;" text=" " textFill="#616161">
+      <Label fx:id="m_total" layoutX="21.0" layoutY="198.0" prefHeight="27.0" prefWidth="243.0" style="-fx-border-radius: 50px;" text=" " textFill="#f2f1f1">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -49,6 +49,6 @@
             <Font name="System Bold" size="11.0" />
          </font>
       </Button>
-      <Label layoutX="6.0" layoutY="521.0" prefHeight="18.0" prefWidth="450.0" text="the amount will be deducted from your balance at the end of this day!" textFill="#333232" />
+      <Label layoutX="6.0" layoutY="521.0" prefHeight="18.0" prefWidth="450.0" text="the amount will be deducted from your balance at the end of this day!" textFill="#faf4f4" />
    </children>
 </AnchorPane>
