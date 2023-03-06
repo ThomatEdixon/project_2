@@ -29,22 +29,23 @@ public class PlanController implements Initializable {
     private LoadMainWindows window = new LoadMainWindows();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        b_back.setOnAction(e ->{
+        b_back.setOnAction(e -> {
             Node node = (Node) e.getSource();
             Stage thisStage = (Stage) node.getScene().getWindow();
             thisStage.close();
-            window.open("/Planning/planning.fxml","Planning","MONTH",679,577,"null");
+            window.open("/Planning/planning.fxml", "Planning", "null", 679, 577, "null");
         });
-        try{
+        try {
             ResultSet rs = (ResultSet) budgetStatement.getById(1);
-            if(rs.next()){
+            if (rs.next()) {
                 m_balance.setText(rs.getString("balance") + "$");
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         m_fixed.setOnAction(e -> {
-            window.open("/spendingPlan/moneyFixed.fxml","Money Fixed","MONTH",722,544,"2");
+            window.open("/spendingPlan/moneyFixed.fxml", "Money Fixed", "MONTH", 722, 544, "1");
         });
+    }
 
 }
