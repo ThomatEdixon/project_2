@@ -77,12 +77,12 @@ public class MoneyFixedController implements Initializable {
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
         Runnable task = () -> {
             try{
-                ResultSet rs = (ResultSet) budgetStatement.getById(this.getId());
+                ResultSet rs = (ResultSet) budgetStatement.getById(id);
                 if(rs.next()){
                     int deduct = rs.getInt("balance") - Integer.valueOf(m_total.getText());
                     if(deduct >= 0){
                         System.out.println(deduct);
-                        budgetStatement.updateBalance(this.getId(),deduct);
+                        budgetStatement.updateBalance(id,deduct);
                     }
                 }
             }catch (SQLException e){
@@ -124,7 +124,7 @@ public class MoneyFixedController implements Initializable {
                 });
 
                 m_month.setItems(moneyFixeds);
-                m_total.setText(moneyFixeds.get(0).getCerruntMoney());
+                m_total.setText("Total : " + moneyFixeds.get(0).getCerruntMoney() + "$");
 
             }
         }catch (SQLException e){
@@ -155,7 +155,7 @@ public class MoneyFixedController implements Initializable {
                 try {
                     if(rss.next()) {
                         moneyFixeds = FXCollections.observableArrayList(new MoneyFixed(rss.getString("o_foodDrink"), rss.getString("o_clothes"), rss.getString("o_petroleum")));
-                        m_total.setText(moneyFixeds.get(0).getCerruntMoney());
+                        m_total.setText("Total : " + moneyFixeds.get(0).getCerruntMoney() + "$");
                         m_month.setItems(moneyFixeds);
                     }
                 }catch (SQLException ex){
@@ -172,7 +172,7 @@ public class MoneyFixedController implements Initializable {
                 try {
                     if(rss.next()) {
                         moneyFixeds = FXCollections.observableArrayList(new MoneyFixed(rss.getString("o_foodDrink"), rss.getString("o_clothes"), rss.getString("o_petroleum")));
-                        m_total.setText(moneyFixeds.get(0).getCerruntMoney());
+                        m_total.setText("Total : " + moneyFixeds.get(0).getCerruntMoney() + "$");
                         m_month.setItems(moneyFixeds);
                     }
                 }catch (SQLException ex){

@@ -44,7 +44,7 @@ public class PlanArisesController implements Initializable {
             Node node = (Node) e.getSource();
             Stage thisStage = (Stage) node.getScene().getWindow();
             thisStage.close();
-            window.open("/Planning/planning.fxml","hello","DAY",500,400,"null");
+            window.open("/Planning/planning.fxml","hello","null",500,400,"null");
         });
 
     }
