@@ -200,12 +200,12 @@ public class BillsController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/MainWindow/homePage.fxml"));
             Parent root = loader.load();
-            Scene loginScene = new Scene(root,719, 429);
+            Scene loginScene = new Scene(root,700, 690);
             HomePageController controller = loader.getController();
             User user = new User();
             user.setId(Integer.parseInt(user_id.getText()));
             controller.getUser(user);
-            loginStage.setTitle("transactions");
+            loginStage.setTitle("Home Page");
             loginStage.setScene(loginScene);
             loginStage.show();
         }catch (IOException e){
@@ -256,7 +256,7 @@ public class BillsController implements Initializable {
             User user = new User();
             user.setId(Integer.parseInt(user_id.getText()));
             planningController.getUser(user);
-            Scene loginScene = new Scene(root,730, 650);
+            Scene loginScene = new Scene(root,730, 690);
             loginStage.setTitle("Planning");
             loginStage.setScene(loginScene);
             loginStage.show();

@@ -22,7 +22,6 @@ public class TransactionStatement implements DAORepository<Transactions> {
     public void update(Transactions transactions) {
 
     }
-
     @Override
     public Transactions getById(int id) {
         return null;
@@ -214,5 +213,30 @@ public class TransactionStatement implements DAORepository<Transactions> {
             e.printStackTrace();
         }
         return transactions;
+    }
+    public ObservableList<Transactions> getFutureTransaction(String date , int userId){
+        ObservableList<Transactions> transactions = FXCollections.observableArrayList();
+//        ObservableList<Transactions> futureTransactions = FXCollections.observableArrayList();
+        String info[] = date.split("-");
+        try{
+            String sql = "SELECT * FROM tbl_transactions where 1";
+            PreparedStatement pst = connection.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                Transactions transaction = new Transactions();
+                transaction.setId(rs.getInt("id"));
+                transaction.setDate(Date.valueOf(rs.getString("transaction_date")));
+                transaction.setDescription(rs.getString("description"));
+                transaction.setAmount(rs.getInt("amount"));
+                transaction.setCategory(getCategory(userId,rs.getInt("category_id")));
+                String infoDate[] = transaction.getDate().toString().split("-");
+                if (Integer.parseInt(infoDate[0]) > Integer.parseInt(info[0]) || (Integer.parseInt(infoDate[0]) == Integer.parseInt(info[0]) && Integer.parseInt(infoDate[1]) > Integer.parseInt(info[1]))){
+                    transactions.add(transaction);
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return transactions ;
     }
 }

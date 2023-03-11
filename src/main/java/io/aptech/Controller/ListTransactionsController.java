@@ -64,32 +64,64 @@ public class ListTransactionsController implements Initializable {
         String type = addBudgetStatement.getType(id);
         balance.setText(n_balance +" "+type);
         int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int month = (cal.get(Calendar.MONTH)+1);
+        System.out.println(year + " "+month);
         now.setText("This Month");
         last.setText("Last Month");
         future.setText("Future");
-        if((month-2)<=0){
-            last1.setText("11"+"/"+(year-1));
+        if((month-2)==0){
+            last1.setText((year-1)+"/"+"12");
+        } else if ((month-2+1)==0){
+            last1.setText((year-1)+"/"+"12");
         }else {
-            last1.setText((month-1)+"/"+year);
+            if(month-2 < 10){
+                last1.setText(year+"/"+"0"+(month-2));
+            }else {
+                last1.setText(year+"/"+(month-2));
+            }
         }
-        if((month-3)<=0){
-            last2.setText("10"+"/"+(year-1));
+        if((month-3)==0){
+            last2.setText((year-1)+"/"+"12");
+        } else if ((month-3+1)==0) {
+            last2.setText((year-1)+"/"+"11");
+        }else if ((month-3+2)==0) {
+            last2.setText((year-1)+"/"+"10");
+        } else {
+            if(month-2 < 10){
+                last2.setText(year+"/"+"0"+(month-3));
+            }else {
+                last2.setText(year+"/"+(month-3));
+            }
+        }
+        if((month-4)==0){
+            last3.setText((year-1)+"/"+"12");
+        }else if ((month-4+1)==0) {
+            last3.setText((year-1)+"/"+"11");
+        }else if ((month-4+2)==0) {
+            last3.setText((year-1)+"/"+"10");
+        }else if ((month-4+3)==0) {
+            last3.setText((year-1)+"/"+"09");
         }else {
-            last2.setText((month-2)+"/"+year);
+            if(month-2 < 10){
+                last3.setText(year+"/"+"0"+(month-4));
+            }else {
+                last3.setText(year+"/"+(month-4));
+            }
         }
-        if((month-4)<=0){
-            last3.setText("9"+"/"+year);
+        if((month-5)==0){
+            last4.setText((year-1)+"/"+"12");
+        }else if ((month-5+1)==0) {
+            last4.setText((year-1)+"/"+"11");
+        }else if ((month-5+2)==0) {
+            last4.setText((year-1)+"/"+"10");
+        }else if ((month-5+3)==0) {
+            last4.setText((year-1)+"/"+"09");
+        }else if ((month-5+4)==0) {
+            last4.setText((year-1)+"/"+"08");
         }else {
-            last3.setText((month-3)+"/"+year);
+            last4.setText(year+"/"+(month-5));
         }
-        if((month-5)<=0){
-            last4.setText("8"+"/"+year);
-        }else {
-            last4.setText((month-4)+"/"+year);
-        }
-        date = cal.get(Calendar.YEAR)+"-"+"0"+cal.get(Calendar.MONTH);
+        date = cal.get(Calendar.YEAR)+"-"+"0"+(cal.get(Calendar.MONTH)+1);
         transactions = transactionStatement.getTransactions(date,Integer.parseInt(user_id.getText()));
         if(transactions.size() <1 ){
             null1.setVisible(true);
@@ -98,6 +130,7 @@ public class ListTransactionsController implements Initializable {
         }else{
             null1.setVisible(false);
             null2.setVisible(false);
+            tbl_transaction.setVisible(true);
             tran_description.setCellValueFactory(new PropertyValueFactory<Transactions,String>("description"));
             tran_date.setCellValueFactory(new PropertyValueFactory<Transactions,Date>("date"));
             tran_amount.setCellValueFactory(new PropertyValueFactory<Transactions,Integer>("amount"));
@@ -124,6 +157,33 @@ public class ListTransactionsController implements Initializable {
             loadSearchWindow();
         });
         future.setOnMouseClicked(e->{
+            now.setStyle("-fx-text-fill: #d7d1d1");
+            future.setStyle("-fx-text-fill: #000000");
+            last.setStyle("-fx-text-fill: #d7d1d1");
+            last1.setStyle("-fx-text-fill: #d7d1d1");
+            last2.setStyle("-fx-text-fill: #d7d1d1");
+            last3.setStyle("-fx-text-fill: #d7d1d1");
+            last4.setStyle("-fx-text-fill: #d7d1d1");
+            if((cal.get(Calendar.MONTH)+1)<10){
+                date = cal.get(Calendar.YEAR)+"-"+"0"+(cal.get(Calendar.MONTH)+1);
+            }else {
+                date = cal.get(Calendar.YEAR)+"-"+(cal.get(Calendar.MONTH)+1);
+            }
+            transactions = transactionStatement.getFutureTransaction(date,Integer.parseInt(user_id.getText()));
+            if(transactions.size() <1 ){
+                null1.setVisible(true);
+                null2.setVisible(true);
+                tbl_transaction.setVisible(false);
+            }else{
+                null1.setVisible(false);
+                null2.setVisible(false);
+                tbl_transaction.setVisible(true);
+                tran_description.setCellValueFactory(new PropertyValueFactory<Transactions,String>("description"));
+                tran_date.setCellValueFactory(new PropertyValueFactory<Transactions,Date>("date"));
+                tran_amount.setCellValueFactory(new PropertyValueFactory<Transactions,Integer>("amount"));
+                tran_category.setCellValueFactory(new PropertyValueFactory<Transactions,Category>("category"));
+                tbl_transaction.setItems(transactions);
+            }
         });
         now.setOnMouseClicked(e->{
             now.setStyle("-fx-text-fill: #000000");
@@ -133,7 +193,11 @@ public class ListTransactionsController implements Initializable {
             last2.setStyle("-fx-text-fill: #d7d1d1");
             last3.setStyle("-fx-text-fill: #d7d1d1");
             last4.setStyle("-fx-text-fill: #d7d1d1");
-            date = cal.get(Calendar.YEAR)+"-"+"0"+cal.get(Calendar.MONTH);
+            if(cal.get(Calendar.MONTH)<10){
+                date = cal.get(Calendar.YEAR)+"-"+"0"+(cal.get(Calendar.MONTH)+1);
+            }else {
+                date = cal.get(Calendar.YEAR)+"-"+(cal.get(Calendar.MONTH)+1);
+            }
             transactions = transactionStatement.getTransactions(date,Integer.parseInt(user_id.getText()));
             if(transactions.size() <1 ){
                 null1.setVisible(true);
@@ -142,6 +206,7 @@ public class ListTransactionsController implements Initializable {
             }else{
                 null1.setVisible(false);
                 null2.setVisible(false);
+                tbl_transaction.setVisible(true);
                 tran_description.setCellValueFactory(new PropertyValueFactory<Transactions,String>("description"));
                 tran_date.setCellValueFactory(new PropertyValueFactory<Transactions,Date>("date"));
                 tran_amount.setCellValueFactory(new PropertyValueFactory<Transactions,Integer>("amount"));
@@ -157,8 +222,8 @@ public class ListTransactionsController implements Initializable {
             last2.setStyle("-fx-text-fill: #d7d1d1");
             last3.setStyle("-fx-text-fill: #d7d1d1");
             last4.setStyle("-fx-text-fill: #d7d1d1");
-            if((cal.get(Calendar.MONTH)-1)<0){
-                date = cal.get(Calendar.YEAR)+"-"+"0"+(cal.get(Calendar.MONTH)-1);
+            if((cal.get(Calendar.MONTH))>=1){
+                date = cal.get(Calendar.YEAR)+"-"+"0"+cal.get(Calendar.MONTH);
             }else{
                 date = (cal.get(Calendar.YEAR)-1)+"-"+"12";
             }
@@ -170,6 +235,7 @@ public class ListTransactionsController implements Initializable {
             }else{
                 null1.setVisible(false);
                 null2.setVisible(false);
+                tbl_transaction.setVisible(true);
                 tran_description.setCellValueFactory(new PropertyValueFactory<Transactions,String>("description"));
                 tran_date.setCellValueFactory(new PropertyValueFactory<Transactions,Date>("date"));
                 tran_amount.setCellValueFactory(new PropertyValueFactory<Transactions,Integer>("amount"));
@@ -186,7 +252,7 @@ public class ListTransactionsController implements Initializable {
             last2.setStyle("-fx-text-fill: #d7d1d1");
             last3.setStyle("-fx-text-fill: #d7d1d1");
             last4.setStyle("-fx-text-fill: #d7d1d1");
-            date = last1.getText();
+            date = last1.getText().replace("/","-");
             transactions = transactionStatement.getTransactions(date,Integer.parseInt(user_id.getText()));
             if(transactions.size() <1 ){
                 null1.setVisible(true);
@@ -195,6 +261,7 @@ public class ListTransactionsController implements Initializable {
             }else{
                 null1.setVisible(false);
                 null2.setVisible(false);
+                tbl_transaction.setVisible(true);
                 tran_description.setCellValueFactory(new PropertyValueFactory<Transactions,String>("description"));
                 tran_date.setCellValueFactory(new PropertyValueFactory<Transactions,Date>("date"));
                 tran_amount.setCellValueFactory(new PropertyValueFactory<Transactions,Integer>("amount"));
@@ -210,7 +277,7 @@ public class ListTransactionsController implements Initializable {
             last2.setStyle("-fx-text-fill: #000000");
             last3.setStyle("-fx-text-fill: #d7d1d1");
             last4.setStyle("-fx-text-fill: #d7d1d1");
-            date = last2.getText();
+            date = last2.getText().replace("/","-");
             transactions = transactionStatement.getTransactions(date,Integer.parseInt(user_id.getText()));
             if(transactions.size() <1 ){
                 null1.setVisible(true);
@@ -219,6 +286,7 @@ public class ListTransactionsController implements Initializable {
             }else{
                 null1.setVisible(false);
                 null2.setVisible(false);
+                tbl_transaction.setVisible(true);
                 tran_description.setCellValueFactory(new PropertyValueFactory<Transactions,String>("description"));
                 tran_date.setCellValueFactory(new PropertyValueFactory<Transactions,Date>("date"));
                 tran_amount.setCellValueFactory(new PropertyValueFactory<Transactions,Integer>("amount"));
@@ -234,7 +302,7 @@ public class ListTransactionsController implements Initializable {
             last2.setStyle("-fx-text-fill: #d7d1d1");
             last3.setStyle("-fx-text-fill: #000000");
             last4.setStyle("-fx-text-fill: #d7d1d1");
-            date = last3.getText();
+            date = last3.getText().replace("/","-");
             transactions = transactionStatement.getTransactions(date,Integer.parseInt(user_id.getText()));
             if(transactions.size() <1 ){
                 null1.setVisible(true);
@@ -243,6 +311,7 @@ public class ListTransactionsController implements Initializable {
             }else{
                 null1.setVisible(false);
                 null2.setVisible(false);
+                tbl_transaction.setVisible(true);
                 tran_description.setCellValueFactory(new PropertyValueFactory<Transactions,String>("description"));
                 tran_date.setCellValueFactory(new PropertyValueFactory<Transactions,Date>("date"));
                 tran_amount.setCellValueFactory(new PropertyValueFactory<Transactions,Integer>("amount"));
@@ -258,7 +327,7 @@ public class ListTransactionsController implements Initializable {
             last2.setStyle("-fx-text-fill: #d7d1d1");
             last3.setStyle("-fx-text-fill: #d7d1d1");
             last4.setStyle("-fx-text-fill: #000000");
-            date = last4.getText();
+            date = last4.getText().replace("/","-");
             transactions = transactionStatement.getTransactions(date,Integer.parseInt(user_id.getText()));
             if(transactions.size() <1 ){
                 null1.setVisible(true);
@@ -267,6 +336,7 @@ public class ListTransactionsController implements Initializable {
             }else{
                 null1.setVisible(false);
                 null2.setVisible(false);
+                tbl_transaction.setVisible(true);
                 tran_description.setCellValueFactory(new PropertyValueFactory<Transactions,String>("description"));
                 tran_date.setCellValueFactory(new PropertyValueFactory<Transactions,Date>("date"));
                 tran_amount.setCellValueFactory(new PropertyValueFactory<Transactions,Integer>("amount"));
@@ -319,14 +389,14 @@ public class ListTransactionsController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/MainWindow/homePage.fxml"));
             Parent root = loader.load();
-            Scene loginScene = new Scene(root,719, 429);
+            Scene loginScene = new Scene(root,700, 690);
             HomePageController controller = loader.getController();
             UserStatement userStatement = new UserStatement();
             User user = userStatement.getUserById(Integer.parseInt(user_id.getText()));
             user.setId(user.getId());
             user.setFullName(user.getFullName());
             controller.getUser(user);
-            loginStage.setTitle("transactions");
+            loginStage.setTitle("Home Page");
             loginStage.setScene(loginScene);
             loginStage.show();
         }catch (IOException e){
@@ -375,7 +445,7 @@ public class ListTransactionsController implements Initializable {
             User user = new User();
             user.setId(Integer.parseInt(user_id.getText()));
             planningController.getUser(user);
-            Scene loginScene = new Scene(root,730, 650);
+            Scene loginScene = new Scene(root,730, 670);
             loginStage.setTitle("Planning");
             loginStage.setScene(loginScene);
             loginStage.show();

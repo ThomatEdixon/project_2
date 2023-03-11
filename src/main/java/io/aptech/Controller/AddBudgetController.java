@@ -6,15 +6,20 @@ import io.aptech.Entity.User;
 import io.aptech.Enum.CategoryTransaction;
 import io.aptech.Model.AddBudgetStatement;
 import io.aptech.Model.BudgetStatement;
+import io.aptech.Model.UserStatement;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.kordamp.ikonli.javafx.FontIcon;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.Calendar;
@@ -36,6 +41,7 @@ public class AddBudgetController implements Initializable {
             Node node = (Node) e.getSource();
             Stage thisStage = (Stage) node.getScene().getWindow();
             thisStage.close();
+            loadHomeWindow();
         });
         btn_add_budget.setOnAction(e->{
             String balance = budget_balance.getText();
@@ -85,10 +91,29 @@ public class AddBudgetController implements Initializable {
                 Node node = (Node) e.getSource();
                 Stage thisStage = (Stage) node.getScene().getWindow();
                 thisStage.close();
+                loadHomeWindow();
             }
         });
     }
     public void getUserId(int id){
         user_id.setText(String.valueOf(id));
+    }
+    public void loadHomeWindow(){
+        try {
+            Stage loginStage = new Stage();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/MainWindow/homePage.fxml"));
+            Parent root = loader.load();
+            Scene loginScene = new Scene(root,700, 690);
+            HomePageController controller = loader.getController();
+            UserStatement userStatement = new UserStatement();
+            User user = userStatement.getUserById(Integer.parseInt(user_id.getText()));
+            controller.getUser(user);
+            loginStage.setTitle("Home page");
+            loginStage.setScene(loginScene);
+            loginStage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }
