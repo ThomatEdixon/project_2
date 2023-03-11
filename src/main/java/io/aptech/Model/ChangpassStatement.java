@@ -51,10 +51,10 @@ public class ChangpassStatement implements DAORepository<User> {
         return null;
     }
 
-    public ResultSet changepasszz( String pass, String email){
+    public ResultSet changepasszz(String pass, String email){
         ResultSet rss = null;
         try {
-            String sql = "Update  tbl_user set user_password=? where user_name=? ";
+            String sql = "Update tbl_user set user_password = ? where user_email =? ";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, pass);
             st.setString(2, email);
