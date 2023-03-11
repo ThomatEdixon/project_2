@@ -10,8 +10,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import org.kordamp.ikonli.javafx.FontIcon;
@@ -22,6 +24,7 @@ import java.util.ResourceBundle;
 
 public class UserManagementController implements Initializable {
     @FXML private Circle imageUserProfile;
+    @FXML private ImageView user_img;
     @FXML private Label lableUserProfile;
     @FXML private Label userProfileName;
     @FXML private FontIcon btnLogOut;
@@ -29,6 +32,7 @@ public class UserManagementController implements Initializable {
     @FXML private FontIcon btnUserProfile;
     @FXML private Label lableUserProfile2;
     @FXML private Label user_id;
+    @FXML private Label addBalance;
     @FXML private FontIcon icon_back_page;
     @FXML private FontIcon transaction;
     @FXML private FontIcon addNew;
@@ -39,6 +43,12 @@ public class UserManagementController implements Initializable {
     public void getUserById(User user) {
         user_id.setText(String.valueOf(user.getId()));
         userProfileName.setText(user.getFullName());
+        UserStatement statement = new UserStatement();
+        User users = statement.getUserById(user.getId());
+        String imgPath = users.getImage();
+        Image img = new Image(imgPath);
+        imageUserProfile.setFill(new ImagePattern(img));
+        user_img.setImage(null);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -50,6 +60,22 @@ public class UserManagementController implements Initializable {
             thisStage.close();
             //load window
             loadHomeWindow();
+        });
+        addBalance.setOnMouseClicked(event -> {
+            try {
+                Stage loginStage = new Stage();
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/Budget/addBudget.fxml"));
+                Parent root = loader.load();
+                AddBalanceController balanceController = loader.getController();
+                balanceController.getUserId(Integer.parseInt(user_id.getText()));
+                Scene loginScene = new Scene(root,505, 350);
+                loginStage.setTitle("Budget");
+                loginStage.setScene(loginScene);
+                loginStage.show();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
         });
         imageUserProfile.setOnMousePressed(e -> {
             //close window
@@ -163,7 +189,7 @@ public class UserManagementController implements Initializable {
             User user = new User();
             user.setId(Integer.parseInt(user_id.getText()));
             userProfileController.getUser(user);
-            Scene scene = new Scene(root, 545, 610);
+            Scene scene = new Scene(root, 545, 650);
             stage.setTitle("User Profile");
             stage.setScene(scene);
             stage.show();
@@ -192,14 +218,14 @@ public class UserManagementController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/MainWindow/homePage.fxml"));
             Parent root = loader.load();
-            Scene loginScene = new Scene(root,719, 429);
+            Scene loginScene = new Scene(root,700, 690);
             HomePageController controller = loader.getController();
             UserStatement userStatement = new UserStatement();
             User user = userStatement.getUserById(Integer.parseInt(user_id.getText()));
             user.setId(user.getId());
             user.setFullName(user.getFullName());
             controller.getUser(user);
-            loginStage.setTitle("transactions");
+            loginStage.setTitle("Home Page");
             loginStage.setScene(loginScene);
             loginStage.show();
         }catch (IOException e){
@@ -210,9 +236,11 @@ public class UserManagementController implements Initializable {
         try {
             Stage loginStage = new Stage();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/Planning/planning.fxml"));
+            loader.setLocation(getClass().getResource("/Transactions/listTransactions.fxml"));
             Parent root = loader.load();
-            Scene loginScene = new Scene(root,719, 429);
+            ListTransactionsController controller = loader.getController();
+            controller.getUserId(Integer.parseInt(user_id.getText()));
+            Scene loginScene = new Scene(root,850, 640);
             loginStage.setTitle("transactions");
             loginStage.setScene(loginScene);
             loginStage.show();
@@ -248,7 +276,7 @@ public class UserManagementController implements Initializable {
             User user = new User();
             user.setId(Integer.parseInt(user_id.getText()));
             planningController.getUser(user);
-            Scene loginScene = new Scene(root,730, 650);
+            Scene loginScene = new Scene(root,730, 690);
             loginStage.setTitle("Planning");
             loginStage.setScene(loginScene);
             loginStage.show();

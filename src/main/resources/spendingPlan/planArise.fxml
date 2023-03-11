@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-cursor: pointer;" styleClass="backgroundSpending" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aptech.Controller.SpendingPlan.PlanArisesController">
+   <children>
+      <Label alignment="CENTER" prefHeight="34.0" prefWidth="600.0" style="-fx-background-color: #8ecae2ba;" text="COSTS INCURRED">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="m_balance" layoutX="20.0" layoutY="44.0" prefHeight="26.0" prefWidth="137.0" style="-fx-font-weight: 700;" text="1.00.000đ" textFill="#f7f6f6">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="26.0" layoutY="71.0" prefHeight="18.0" prefWidth="54.0" text="balance" textFill="WHITE" />
+      <ImageView fitHeight="18.0" fitWidth="27.0" layoutX="71.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/wallet.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="d_arises" layoutX="195.0" layoutY="157.0" mnemonicParsing="false" prefHeight="118.0" prefWidth="209.0" style="-fx-background-color: #8ecae2ba #8ecae2ba; -fx-cursor: hand;" text="COSTS INCURRED" textFill="#101010f5">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ImageView fitHeight="18.0" fitWidth="54.0" layoutX="17.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/back.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="b_back" layoutX="5.0" layoutY="4.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="42.0" style="-fx-background-color: transparenst; -fx-cursor: hand;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+   </children>
+</AnchorPane>

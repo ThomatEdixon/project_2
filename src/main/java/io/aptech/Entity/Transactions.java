@@ -58,4 +58,7 @@ public class Transactions {
     public void setDescription(String description) {
         this.description = description;
     }
+    public Transactions getTransactions(Transactions transactions) {
+        return transactions;
+    }
 }

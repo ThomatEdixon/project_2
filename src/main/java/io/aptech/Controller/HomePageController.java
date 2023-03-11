@@ -40,7 +40,6 @@ public class HomePageController implements Initializable {
     @FXML private FontIcon btnEye;
     @FXML private Label moneyBalance;
     @FXML private Label user_id;
-    @FXML private Label addBalance;
     @FXML private Label user_name;
     @FXML private Label moneyThisMonth;
     @FXML private Label negativePercent;
@@ -179,22 +178,22 @@ public class HomePageController implements Initializable {
             //Loading Main Widows
             loadAccountUserWindow();
         });
-//        addBalance.setOnMouseClicked(event -> {
-//            try {
-//                Stage loginStage = new Stage();
-//                FXMLLoader loader = new FXMLLoader();
-//                loader.setLocation(getClass().getResource("/Budget/budget.fxml"));
-//                Parent root = loader.load();
-//                AddBudgetController budgetController = loader.getController();
-//                budgetController.getUserId(Integer.parseInt(user_id.getText()));
-//                Scene loginScene = new Scene(root,505, 350);
-//                loginStage.setTitle("Budget");
-//                loginStage.setScene(loginScene);
-//                loginStage.show();
-//            }catch (IOException e){
-//                e.printStackTrace();
-//            }
-//        });
+        addBalance.setOnMouseClicked(event -> {
+            try {
+                Stage loginStage = new Stage();
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/Budget/budget.fxml"));
+                Parent root = loader.load();
+                AddBudgetController budgetController = loader.getController();
+                budgetController.getUserId(Integer.parseInt(user_id.getText()));
+                Scene loginScene = new Scene(root,505, 350);
+                loginStage.setTitle("Budget");
+                loginStage.setScene(loginScene);
+                loginStage.show();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        });
     }
     public void loadHomeWindow(){
         try {
@@ -202,12 +201,12 @@ public class HomePageController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/MainWindow/homePage.fxml"));
             Parent root = loader.load();
-            Scene loginScene = new Scene(root,719, 429);
+            Scene loginScene = new Scene(root,700, 690);
             HomePageController controller = loader.getController();
             User user = new User();
             user.setId(Integer.parseInt(user_id.getText()));
             controller.getUser(user);
-            loginStage.setTitle("transactions");
+            loginStage.setTitle("Home page");
             loginStage.setScene(loginScene);
             loginStage.show();
         }catch (IOException e){
@@ -218,9 +217,11 @@ public class HomePageController implements Initializable {
         try {
             Stage loginStage = new Stage();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/Planning/planning.fxml"));
+            loader.setLocation(getClass().getResource("/Transactions/listTransactions.fxml"));
             Parent root = loader.load();
-            Scene loginScene = new Scene(root,719, 429);
+            ListTransactionsController controller = loader.getController();
+            controller.getUserId(Integer.parseInt(user_id.getText()));
+            Scene loginScene = new Scene(root,850, 640);
             loginStage.setTitle("transactions");
             loginStage.setScene(loginScene);
             loginStage.show();
@@ -256,7 +257,7 @@ public class HomePageController implements Initializable {
             User user = new User();
             user.setId(Integer.parseInt(user_id.getText()));
             planningController.getUser(user);
-            Scene loginScene = new Scene(root,730, 650);
+            Scene loginScene = new Scene(root,730, 690);
             loginStage.setTitle("Planning");
             loginStage.setScene(loginScene);
             loginStage.show();

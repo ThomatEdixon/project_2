@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane prefHeight="565.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.aptech.Controller.ResultSearchController">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="16.0" prefHeight="64.0" prefWidth="694.0" style="-fx-background-color: #fff;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="67.0" layoutY="8.0" prefHeight="38.0" prefWidth="181.0" text="Result Search">
+               <font>
+                  <Font name="Calibri Bold" size="26.0" />
+               </font>
+            </Label>
+            <Label fx:id="user_id" layoutX="235.0" layoutY="19.0" />
+         </children>
+      </AnchorPane>
+      <FontIcon fx:id="icon_back_page" iconLiteral="fas-arrow-left" iconSize="19" layoutX="26.0" layoutY="34.0" text="" />
+      <Label fx:id="no_tran" layoutX="191.0" layoutY="210.0" prefHeight="108.0" prefWidth="379.0" text="No Transaction For Your Search" textFill="#ec1d2e">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tbl_result" layoutX="16.0" layoutY="116.0" prefHeight="502.0" prefWidth="740.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <columns>
+            <TableColumn fx:id="tran_description" prefWidth="270.40000611543655" text="Description" />
+            <TableColumn fx:id="tran_date" prefWidth="192.79998779296875" text="Date" />
+            <TableColumn fx:id="tran_amount" prefWidth="185.5999755859375" text="Amount" />
+            <TableColumn fx:id="tran_category" prefWidth="196.0" text="Category" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -33,7 +33,7 @@ public class AddEventController implements Initializable {
     @FXML private DatePicker startDateEvent;
     @FXML private DatePicker endDateEvent;
     @FXML private Button btn_addEvent;
-    @FXML private ImageView exits_addevent;
+    @FXML private Button exits_addEvent;
     @FXML private Label err_add_name;
     @FXML private Label err_add_spent;
     @FXML private Label err_add_startdate;
@@ -47,15 +47,13 @@ public class AddEventController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         user_id.setVisible(false);
-        exits_addevent.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                Node node = (Node) event.getSource();
+        exits_addEvent.setOnAction(e ->{
+                Node node = (Node) e.getSource();
                 Stage thisStage = (Stage) node.getScene().getWindow();
                 thisStage.close();
                 //load login window
                 loadEventWindow();
-            }
+
         });
         btn_addEvent.setOnAction(e->{
             String eventName  = addEventName.getText();
