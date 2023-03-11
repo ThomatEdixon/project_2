@@ -90,6 +90,39 @@ public class UserStatement implements DAORepository<User> {
         return user;
     }
 
+    public User getUserByEmail(String email){
+        User user = new User();
+
+        try {
+            String sql = "SELECT * FROM tbl_user where user_email = ?";
+
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1,email);
+            ResultSet rs = stm.executeQuery();
+            if(rs.next()){
+                int user_id = rs.getInt("id");
+                String fullName = rs.getString("full_name");
+                String gender = rs.getString("gender");
+                String user_email = rs.getString("user_email");
+                String user_password = rs.getString("user_password");
+                String user_phone = rs.getString("user_phone");
+                String user_image = rs.getString("user_image");
+
+                user.setId(user_id);
+                user.setFullName(fullName);
+                user.setGender(UserGender.valueOf(gender));
+                user.setEmail(user_email);
+                user.setPassword(user_password);
+                user.setPhone(user_phone);
+                user.setImage(user_image);
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return user;
+    }
+
     @Override
     public void delete(User user) {
 
@@ -98,5 +131,17 @@ public class UserStatement implements DAORepository<User> {
     @Override
     public ObservableList<User> getAll() {
         return null;
+    }
+
+    public void updatePasswordById(String password, int id) {
+        try {
+            String sql = "UPDATE tbl_user SET user_password =? WHERE id = ?";
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1,password);
+            pst.setInt(2,id);
+            pst.executeUpdate();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

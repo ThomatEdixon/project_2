@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -82,15 +83,39 @@ public class ForgotPasswordController implements Initializable {
 
                         Runnable task = () -> {
                             forgotPasswordStatement.dropTempCode();
+
+                            //close window
+                            Node node = (Node) e.getSource();
+                            Stage thisStage = (Stage) node.getScene().getWindow();
+                            thisStage.close();
+                            // load Login
+                            loadLoginWindow();
                         };
                         executor.schedule(task, 1, TimeUnit.MINUTES);
                         executor.shutdown();
+
+                        // transform to verify code
+                        User newUser = new User();
+                        newUser.setId(rs.getInt("id"));
                         //close window
                         Node node = (Node) e.getSource();
                         Stage thisStage = (Stage) node.getScene().getWindow();
                         thisStage.close();
-                        //load login window
-                        loadVerifyCodeWindow();
+                        //load verifyCode window
+                        try {
+                            Stage verifyCodeStage = new Stage();
+                            FXMLLoader loader = new FXMLLoader();
+                            loader.setLocation(getClass().getResource("/User/verifyCode.fxml"));
+                            Parent root = loader.load();
+                            VerifyController verifyController = loader.getController();
+                            verifyController.getUser(newUser);
+                            Scene verifyCodeScene = new Scene(root,475, 240);
+                            verifyCodeStage.setTitle("Verify Code");
+                            verifyCodeStage.setScene(verifyCodeScene);
+                            verifyCodeStage.show();
+                        }catch (IOException e1){
+                            e1.printStackTrace();
+                        }
                     } else {
                         err_phone.setText("Email or Phone is not match");
                         err_phone.setStyle("-fx-text-fill: #ff1744");
@@ -109,21 +134,6 @@ public class ForgotPasswordController implements Initializable {
             //load login window
             loadLoginWindow();
         });
-    }
-
-    public void loadVerifyCodeWindow(){
-        try {
-            Stage verifyCodeStage = new Stage();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/User/verifyCode.fxml"));
-            Parent root = loader.load();
-            Scene verifyCodeScene = new Scene(root,475, 240);
-            verifyCodeStage.setTitle("Verify Code");
-            verifyCodeStage.setScene(verifyCodeScene);
-            verifyCodeStage.show();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
     }
 
     public void loadLoginWindow(){
